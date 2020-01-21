@@ -7,6 +7,7 @@
 //
 
 #include <algorithm>
+#include <array>
 #include <iostream>
 #include <iterator>
 #include <list>
@@ -18,49 +19,7 @@
 #include "io.h"
 #include "timer.h"
 
-std::vector<std::string> getSolutionWords1(const std::vector<std::string>& words, const std::string& lettersBoard)
-{
-    std::vector<std::string> solutionWords;
-    for (auto wordIter = cbegin(words); wordIter != cend(words); ++wordIter)
-    {
-        const std::string& word = *wordIter;
-        std::vector<char> availableLetters(begin(lettersBoard), end(lettersBoard));
-        auto letterIter = cbegin(word);
-        for (; letterIter != cend(word); ++letterIter)
-        {
-            auto foundIter = std::find(begin(availableLetters), end(availableLetters), *letterIter);
-            if (foundIter == end(availableLetters))
-                break;
-            availableLetters.erase(foundIter);
-        }
-        if (letterIter == cend(word))
-            solutionWords.push_back(*wordIter);
-    }
-    return solutionWords;
-}
-
-std::vector<std::string> getSolutionWords2(const std::vector<std::string>& words, const std::string& lettersBoard)
-{
-    std::vector<std::string> solutionWords;
-    for (auto wordIter = cbegin(words); wordIter != cend(words); ++wordIter)
-    {
-        const std::string& word = *wordIter;
-        bool isValid = true;
-        for (const auto& letter: std::unordered_set<char>(begin(word), end(word)))
-        {
-            if (std::count(begin(word), end(word), letter) > std::count(begin(lettersBoard), end(lettersBoard), letter) )
-            {
-                isValid = false;
-                break;
-            }
-        }
-        if (isValid)
-            solutionWords.push_back(word);
-    }
-    return solutionWords;
-}
-
-std::vector<std::string> getSolutionWords3(const std::vector<std::string>& words, std::string lettersBoard)
+std::vector<std::string> getSolutionWords(const std::vector<std::string>& words, std::string lettersBoard)
 {
     std::vector<std::string> solutionWords;
     std::sort(begin(lettersBoard), end(lettersBoard));
@@ -74,11 +33,9 @@ std::vector<std::string> getSolutionWords3(const std::vector<std::string>& words
     return solutionWords;
 }
 
-int main(int argc, const char * argv[])
+void wordGame(const std::string& path)
 {
-
     const std::size_t lettersBoardSize = 9;
-    const std::string path = "/Users/ianguest/C++/countdown/countdown";
     const std::string letters = io::getLetters(path, "letter_distribution.txt");
     assert (letters.size());
 
@@ -100,7 +57,7 @@ int main(int argc, const char * argv[])
     std::cin >> guess;
     
     Timer t;
-    std::vector<std::string> solutionWords = getSolutionWords3(words, lettersBoard);
+    std::vector<std::string> solutionWords = getSolutionWords(words, lettersBoard);
     std::cout << t.elapsed() << std::endl;
     
     std::sort(begin(solutionWords), end(solutionWords));
@@ -114,6 +71,15 @@ int main(int argc, const char * argv[])
         std::cout << "Well done!" << std::endl;
     else
         std::cout << "Lame!" << std::endl;
+}
+
+int main(int argc, const char * argv[])
+{
+    const std::string path = "/Users/ianguest/C++/countdown/countdown";
+
+    static const std::array largeNumbers{ 25, 50, 75, 100 };
+    static const std::array smallNumbers{ 1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 , 8 , 8 , 9 , 9 , 10 , 10 };
+    
     
     return 0;
 }
