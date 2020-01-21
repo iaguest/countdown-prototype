@@ -22,10 +22,10 @@ std::string makeFilePath(const std::string& path, const std::string& fileName)
     return path + "/" + fileName;
 }
 
-std::string getLetters(const std::string& path, const std::string& fileName)
+std::vector<char> getLetters(const std::string& path, const std::string& fileName)
 {
     const std::string letterDistributionPath = makeFilePath(path, fileName);
-    std::string letters;
+    std::vector<char> letters;
     std::ifstream is(letterDistributionPath);
     if (is.is_open())
     {
@@ -39,7 +39,8 @@ std::string getLetters(const std::string& path, const std::string& fileName)
                 continue;
             auto sepIt = std::find(begin(line), end(line), ',');
             const int numLetters = std::stoi(std::string(++sepIt, end(line)));
-            letters.append(numLetters, std::tolower(letter));
+            std::generate_n(std::back_inserter(letters), numLetters,
+                            [&](){ return std::tolower(letter); });
         }
     }
     return letters;

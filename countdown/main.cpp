@@ -39,7 +39,7 @@ void wordGame(const std::string& path)
     std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
     
     const std::size_t lettersBoardSize = 9;
-    std::string letters = io::getLetters(path, "letter_distribution.txt");
+    std::vector<char> letters = io::getLetters(path, "letter_distribution.txt");
     assert (letters.size());
     
     std::shuffle(begin(letters), end(letters), gen);
