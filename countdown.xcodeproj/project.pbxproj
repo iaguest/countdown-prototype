@@ -29,6 +29,9 @@
 		6AA821E323D0ED9C003CA7FC /* letter_distribution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = letter_distribution.txt; sourceTree = "<group>"; };
 		6AA821E423D0EE2C003CA7FC /* io.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = io.h; sourceTree = "<group>"; };
 		6AA821F823D1DDAC003CA7FC /* timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = timer.h; sourceTree = "<group>"; };
+		6AA821FD23D8C602003CA7FC /* IGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGame.h; sourceTree = "<group>"; };
+		6AA821FE23D8C67A003CA7FC /* GameRunner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRunner.h; sourceTree = "<group>"; };
+		6AA821FF23D8C918003CA7FC /* LettersGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LettersGame.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,9 @@
 				6AA821DB23D0ECF2003CA7FC /* main.cpp */,
 				6AA821E423D0EE2C003CA7FC /* io.h */,
 				6AA821F823D1DDAC003CA7FC /* timer.h */,
+				6AA821FD23D8C602003CA7FC /* IGame.h */,
+				6AA821FE23D8C67A003CA7FC /* GameRunner.h */,
+				6AA821FF23D8C918003CA7FC /* LettersGame.h */,
 			);
 			path = countdown;
 			sourceTree = "<group>";

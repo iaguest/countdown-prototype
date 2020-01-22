@@ -16,7 +16,9 @@
 #include <string>
 #include <vector>
 
+#include "GameRunner.h"
 #include "io.h"
+#include "LettersGame.h"
 #include "timer.h"
 
 std::vector<std::string> getSolutionWords(const std::vector<std::string>& words, std::string lettersBoard)
@@ -75,27 +77,30 @@ void wordGame(const std::string& path)
 
 int main(int argc, const char * argv[])
 {
-    const std::string path = "/Users/ianguest/C++/countdown/countdown";
-    static const int numbersBoardSize = 6;
+//    const std::string path = "/Users/ianguest/C++/countdown/countdown";
+//    static const int numbersBoardSize = 6;
+//
+//    std::random_device rd;  // used to seed random number engine
+//    std::mt19937 gen(rd()); // random engine
+//    std::array largeNumbers{ 25, 50, 75, 100 };
+//    std::array smallNumbers{ 1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 , 8 , 8 , 9 , 9 , 10 , 10 };
+//    std::shuffle(begin(smallNumbers), end(smallNumbers), gen);
+//
+//    std::vector<int> numbersBoard;
+//
+//    std::size_t numLargeNumbers = std::uniform_int_distribution<>(0, largeNumbers.size())(gen);
+//
+//    std::sample(rbegin(largeNumbers), rend(largeNumbers), std::back_inserter(numbersBoard),
+//                numLargeNumbers, std::mt19937{std::random_device{}()});
+//    std::sample(smallNumbers.begin(), smallNumbers.end(), std::back_inserter(numbersBoard),
+//                numbersBoardSize - numLargeNumbers, std::mt19937{std::random_device{}()});
+//
+//    for (auto i: numbersBoard) std::cout << i << std::endl;
+//
+//    wordGame(path);
     
-    std::random_device rd;  // used to seed random number engine
-    std::mt19937 gen(rd()); // random engine
-    std::array largeNumbers{ 25, 50, 75, 100 };
-    std::array smallNumbers{ 1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 , 8 , 8 , 9 , 9 , 10 , 10 };
-    std::shuffle(begin(smallNumbers), end(smallNumbers), gen);
-    
-    std::vector<int> numbersBoard;
-    
-    std::size_t numLargeNumbers = std::uniform_int_distribution<>(0, largeNumbers.size())(gen);
-
-    std::sample(rbegin(largeNumbers), rend(largeNumbers), std::back_inserter(numbersBoard),
-                numLargeNumbers, std::mt19937{std::random_device{}()});
-    std::sample(smallNumbers.begin(), smallNumbers.end(), std::back_inserter(numbersBoard),
-                numbersBoardSize - numLargeNumbers, std::mt19937{std::random_device{}()});
-    
-    for (auto i: numbersBoard) std::cout << i << std::endl;
-    
-    wordGame(path);
-    
+    LettersGame g;
+    GameRunner bob(g);
+    std::cout << bob.execute();
     return 0;
 }
