@@ -12,30 +12,27 @@
 #include <string>
 #include <vector>
 
-#include "IGame.h"
+#include "AbstractGame.h"
 
-class LettersGame : public IGame<char>
+class LettersGame : public AbstractGame<char>
 {
 public:
     LettersGame(const std::string& resourcePath,
-                const std::vector<std::string>& words);
+                const std::vector<std::string>& words,
+                int numConsonants,
+                int numVowels);
     
-    std::vector<char> getGameBoard() const;
+    void initialize() override;
     
-    bool allowInterrupts() const;
-    
-    int answerWaitTime() const;
-    
-    int calculateScore(const std::string& answer) const;
+    int calculateScore(const std::string& answer) const override;
 
 private:
     std::vector<std::string> getSolutionWords(const std::vector<std::string>& words,
                                               std::vector<char> lettersBoard) const;
 private:
-    static const std::string letterDistributionFileName;
-    
-    const std::string& path;
     const std::vector<std::string>& words;
+    const int numConsonants;
+    const int numVowels;
     std::vector<char> lettersBoard;
 };
 

@@ -12,7 +12,7 @@
 #include <chrono>
 #include <thread>
 
-#include "IGame.h"
+#include "AbstractGame.h"
 #include "Timer.h"
 
 template <class T>
@@ -20,14 +20,19 @@ class GameRunner
 {
 public:
     
-    GameRunner(IGame<T>& game)
+    GameRunner(AbstractGame<T>& game)
       : game(game)
     {
     }
 
     int execute()
     {
+        game.initialize();
+        
+        game.onBegin();
+        
         for (auto i: game.getGameBoard()) std::cout << i << " ";
+        
         bool isInterruptable = game.allowInterrupts();
         
         std::cout << std::endl;
@@ -49,11 +54,13 @@ public:
             return 0;
         
         return game.calculateScore(answer);
+        
+        game.onEnd();
     }
     
 private:
     
-    IGame<T>& game;
+    AbstractGame<T>& game;
 };
 
 #endif /* GameRunner_h */
