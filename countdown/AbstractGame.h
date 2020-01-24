@@ -22,12 +22,12 @@ public:
     }
 
     virtual void initialize() = 0;
-    virtual int calculateScore(const std::string& answer) const = 0;
+    virtual int getScore(const std::string& answer) const = 0;
 
-    virtual bool allowInterrupts() const { return false; }
-    virtual int answerWaitTime() const { return 10; }
     virtual void onBegin() {};
     virtual void onEnd() {};
+    virtual bool allowInterrupts() const { return false; }
+    virtual int answerWaitTime() const { return 10; }
     
     std::vector<T> getGameBoard() const { return gameBoard; }
     

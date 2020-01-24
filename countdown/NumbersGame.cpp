@@ -49,7 +49,7 @@ void NumbersGame::onBegin()
     os << "Target is: " << target << std::endl;
 }
 
-int NumbersGame::calculateScore(const std::string &answer) const
+int NumbersGame::getScore(const std::string &answer) const
 {
     return 0;
 }

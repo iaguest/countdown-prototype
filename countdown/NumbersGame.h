@@ -26,7 +26,7 @@ public:
     
     void onBegin() override;
     
-    int calculateScore(const std::string &answer) const override;
+    int getScore(const std::string &answer) const override;
     
 private:
     std::ostream& os;

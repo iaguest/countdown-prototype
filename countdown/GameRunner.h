@@ -53,7 +53,7 @@ public:
         if (t2.elapsed() > game.answerWaitTime())
             return 0;
         
-        return game.calculateScore(answer);
+        return game.getScore(answer);
         
         game.onEnd();
     }

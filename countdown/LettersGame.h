@@ -24,7 +24,7 @@ public:
     
     void initialize() override;
     
-    int calculateScore(const std::string& answer) const override;
+    int getScore(const std::string& answer) const override;
 
 private:
     std::vector<std::string> getSolutionWords(const std::vector<std::string>& words,

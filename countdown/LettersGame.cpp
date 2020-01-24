@@ -43,7 +43,7 @@ void LettersGame::initialize()
                 Constants::lettersBoardSize, gen);
 }
 
-int LettersGame::calculateScore(const std::string& answer) const
+int LettersGame::getScore(const std::string& answer) const
 {
     std::vector<std::string> solutionWords = getSolutionWords(words, lettersBoard);
 
