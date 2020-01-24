@@ -9,14 +9,34 @@
 #ifndef LettersGame_h
 #define LettersGame_h
 
+#include <string>
+#include <vector>
+
 #include "IGame.h"
 
-class LettersGame : public IGame<int>
+class LettersGame : public IGame<char>
 {
-    std::vector<int> getGameBoard() { return std::vector<int>{1,2,3}; }
-    bool allowInterrupts() { return false; }
-    int maxAnswerWaitTime() { return 5; }
-    int calculateScore(std::string& answer) { return 20; }
+public:
+    LettersGame(const std::string& resourcePath,
+                const std::vector<std::string>& words);
+    
+    std::vector<char> getGameBoard() const;
+    
+    bool allowInterrupts() const;
+    
+    int answerWaitTime() const;
+    
+    int calculateScore(const std::string& answer) const;
+
+private:
+    std::vector<std::string> getSolutionWords(const std::vector<std::string>& words,
+                                              std::vector<char> lettersBoard) const;
+private:
+    static const std::string letterDistributionFileName;
+    
+    const std::string& path;
+    const std::vector<std::string>& words;
+    std::vector<char> lettersBoard;
 };
 
 #endif /* LettersGame_h */

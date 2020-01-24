@@ -16,10 +16,10 @@ template <typename T>
 class IGame
 {
 public:
-    virtual std::vector<T> getGameBoard() = 0;
-    virtual bool allowInterrupts() = 0;
-    virtual int maxAnswerWaitTime() = 0;
-    virtual int calculateScore(std::string& answer) = 0;
+    virtual std::vector<T> getGameBoard() const = 0;
+    virtual bool allowInterrupts() const = 0;
+    virtual int answerWaitTime() const = 0;
+    virtual int calculateScore(const std::string& answer) const = 0;
 };
 
 #endif /* IGame_h */

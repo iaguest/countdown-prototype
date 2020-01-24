@@ -13,7 +13,7 @@
 #include <thread>
 
 #include "IGame.h"
-#include "timer.h"
+#include "Timer.h"
 
 template <class T>
 class GameRunner
@@ -45,7 +45,7 @@ public:
         std::string answer;
         std::cout << "Enter answer: ";
         std::cin >> answer;
-        if (t2.elapsed() > game.maxAnswerWaitTime())
+        if (t2.elapsed() > game.answerWaitTime())
             return 0;
         
         return game.calculateScore(answer);
