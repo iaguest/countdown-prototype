@@ -20,7 +20,7 @@ class GameRunner
 {
 public:
     
-    GameRunner(std::vector<IGame*> games)
+    GameRunner(const std::vector<IGame*>& games)
       : games(games)
     {
     }
@@ -69,7 +69,7 @@ public:
     
 private:
     
-    std::vector<IGame*> games;
+    const std::vector<IGame*>& games;
 };
 
 #endif /* GameRunner_h */
