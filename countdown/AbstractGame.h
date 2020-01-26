@@ -1,19 +1,23 @@
 //
-//  IGame.h
+//  AbstractGame.h
 //  countdown
 //
 //  Created by Ian Guest on 22/01/2020.
 //  Copyright © 2020 Ian Guest. All rights reserved.
 //
 
-#ifndef IGame_h
-#define IGame_h
+#ifndef AbstractGame_h
+#define AbstractGame_h
 
+#include <random>
+#include <sstream>
 #include <string>
 #include <vector>
 
+#include "IGame.h"
+
 template <typename T>
-class AbstractGame
+class AbstractGame : public IGame
 {
 public:
     AbstractGame(const std::string& resourcePath)
@@ -21,15 +25,12 @@ public:
     {
     }
 
-    virtual void initialize() = 0;
-    virtual int getScore(const std::string& answer) const = 0;
-
-    virtual void onBegin() {};
-    virtual void onEnd() {};
-    virtual bool allowInterrupts() const { return false; }
-    virtual int answerWaitTime() const { return 10; }
+    void onBegin() const override {};
+    void onEnd() const override {};
+    bool allowInterrupts() const override { return false; }
+    int answerWaitTime() const override { return 10; }
     
-    std::vector<T> getGameBoard() const { return gameBoard; }
+    std::string getGameBoard() const override;
     
 protected:
     std::mt19937 gen; //Standard mersenne_twister_engine
@@ -37,4 +38,16 @@ protected:
     std::vector<T> gameBoard;
 };
 
-#endif /* IGame_h */
+
+template <typename T>
+std::string AbstractGame<T>::getGameBoard() const
+{
+    std::stringstream board;
+    board << "[ ";
+    std::for_each(begin(gameBoard), end(gameBoard),
+                  [&board](const auto& elem){ board << elem << " "; });
+    board << "]";
+    return board.str();
+}
+
+#endif /* AbstractGame_h */

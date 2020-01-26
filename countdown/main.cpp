@@ -19,6 +19,7 @@
 
 #include "Constants.h"
 #include "GameRunner.h"
+#include "IGame.h"
 #include "Io.h"
 #include "LettersGame.h"
 #include "NumbersGame.h"
@@ -31,9 +32,12 @@ int main(int argc, const char * argv[])
     
     std::vector<std::string> words = Io::getWords(path, Constants::dictionaryWordsFileName);
         
-    LettersGame g(path, words, 0, 0);
-    //NumbersGame g(path, std::cout, 0, 0);
-    GameRunner bob(g);
+    std::vector<IGame*> games;
+    LettersGame g1(path, words, 0, 0);
+    NumbersGame g2(path, std::cout, 0, 0);
+    games.push_back(&g1);
+    games.push_back(&g2);
+    GameRunner bob(games);
     std::cout << bob.execute();
     return 0;
 }

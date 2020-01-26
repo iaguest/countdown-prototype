@@ -44,7 +44,7 @@ void NumbersGame::initialize()
         target = std::uniform_int_distribution<>(100, 999)(gen);
 }
 
-void NumbersGame::onBegin()
+void NumbersGame::onBegin() const
 {
     os << "Target is: " << target << std::endl;
 }

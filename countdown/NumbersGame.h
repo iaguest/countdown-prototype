@@ -24,7 +24,7 @@ public:
 
     void initialize() override;
     
-    void onBegin() override;
+    void onBegin() const override;
     
     int getScore(const std::string &answer) const override;
     

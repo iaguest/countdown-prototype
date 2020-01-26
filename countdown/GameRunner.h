@@ -11,56 +11,59 @@
 
 #include <chrono>
 #include <thread>
+#include <vector>
 
-#include "AbstractGame.h"
+#include "IGame.h"
 #include "Timer.h"
 
-template <class T>
 class GameRunner
 {
 public:
     
-    GameRunner(AbstractGame<T>& game)
-      : game(game)
+    GameRunner(std::vector<IGame*> games)
+      : games(games)
     {
     }
 
     int execute()
     {
-        game.initialize();
-        
-        game.onBegin();
-        
-        for (auto i: game.getGameBoard()) std::cout << i << " ";
-        
-        bool isInterruptable = game.allowInterrupts();
-        
-        std::cout << std::endl;
-        std::cout << "Start 30 second countdown!" << std::endl;
-        Timer t1;
-        while (t1.elapsed() < 30)
-        {
-            if (isInterruptable) //&& anyKeyPress)
-              break;
-            std::this_thread::sleep_for (std::chrono::seconds(1));
+        int score = 0;
+        for (auto& game: games) {
+            game->initialize();
+            
+            game->onBegin();
+            
+            std::cout << game->getGameBoard();
+            
+            bool isInterruptable = game->allowInterrupts();
+            
+            std::cout << std::endl;
+            std::cout << "Start 30 second countdown!" << std::endl;
+            Timer t1;
+            while (t1.elapsed() < 30)
+            {
+                if (isInterruptable) //&& anyKeyPress)
+                  break;
+                std::this_thread::sleep_for (std::chrono::seconds(1));
+            }
+            std::cout << "Times up!" << std::endl;
+            
+            Timer t2;
+            std::string answer;
+            std::cout << "Enter answer: ";
+            std::cin >> answer;
+            
+            game->onEnd();
+            
+            if (t2.elapsed() <= game->answerWaitTime())
+                score += game->getScore(answer);
         }
-        std::cout << "Times up!" << std::endl;
-        
-        Timer t2;
-        std::string answer;
-        std::cout << "Enter answer: ";
-        std::cin >> answer;
-        if (t2.elapsed() > game.answerWaitTime())
-            return 0;
-        
-        return game.getScore(answer);
-        
-        game.onEnd();
+        return score;
     }
     
 private:
     
-    AbstractGame<T>& game;
+    std::vector<IGame*> games;
 };
 
 #endif /* GameRunner_h */
