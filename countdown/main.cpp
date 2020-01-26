@@ -31,8 +31,8 @@ int main(int argc, const char * argv[])
     
     std::vector<std::string> words = Io::getWords(path, Constants::dictionaryWordsFileName);
         
-    //LettersGame g(path, words, 0, 0);
-    NumbersGame g(path, std::cout, 0, 0);
+    LettersGame g(path, words, 0, 0);
+    //NumbersGame g(path, std::cout, 0, 0);
     GameRunner bob(g);
     std::cout << bob.execute();
     return 0;

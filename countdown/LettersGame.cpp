@@ -39,13 +39,13 @@ void LettersGame::initialize()
     
     std::shuffle(begin(letters), end(letters), gen);
     
-    std::sample(begin(letters), end(letters), std::back_inserter(lettersBoard),
+    std::sample(begin(letters), end(letters), std::back_inserter(gameBoard),
                 Constants::lettersBoardSize, gen);
 }
 
 int LettersGame::getScore(const std::string& answer) const
 {
-    std::vector<std::string> solutionWords = getSolutionWords(words, lettersBoard);
+    std::vector<std::string> solutionWords = getSolutionWords(words, gameBoard);
 
     std::sort(begin(solutionWords), end(solutionWords));
     std::stable_sort(begin(solutionWords), end(solutionWords),
@@ -58,15 +58,15 @@ int LettersGame::getScore(const std::string& answer) const
 }
 
 std::vector<std::string> LettersGame::getSolutionWords(const std::vector<std::string>& words,
-                                                       std::vector<char> lettersBoard) const
+                                                       std::vector<char> gameBoard) const
 {
     std::vector<std::string> solutionWords;
-    std::sort(begin(lettersBoard), end(lettersBoard));
+    std::sort(begin(gameBoard), end(gameBoard));
     for (const auto& word: words)
     {
         std::string wordCopy = word;
         std::sort(begin(wordCopy), end(wordCopy));
-        if (std::includes(begin(lettersBoard), end(lettersBoard), begin(wordCopy), end(wordCopy)))
+        if (std::includes(begin(gameBoard), end(gameBoard), begin(wordCopy), end(wordCopy)))
             solutionWords.push_back(word);
     }
     return solutionWords;

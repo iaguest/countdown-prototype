@@ -33,7 +33,6 @@ private:
     const std::vector<std::string>& words;
     const int numConsonants;
     const int numVowels;
-    std::vector<char> lettersBoard;
 };
 
 #endif /* LettersGame_h */
