@@ -42,6 +42,7 @@
 		6AA8220B23DB189C003CA7FC /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		6AA8220C23DB1A69003CA7FC /* NumbersGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGame.cpp; sourceTree = "<group>"; };
 		6AA8220D23DB1A69003CA7FC /* NumbersGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumbersGame.h; sourceTree = "<group>"; };
+		6AA8221123DDD01D003CA7FC /* IGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGame.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +89,7 @@
 				6AA8220B23DB189C003CA7FC /* Timer.h */,
 				6AA8220C23DB1A69003CA7FC /* NumbersGame.cpp */,
 				6AA8220D23DB1A69003CA7FC /* NumbersGame.h */,
+				6AA8221123DDD01D003CA7FC /* IGame.h */,
 			);
 			path = countdown;
 			sourceTree = "<group>";
