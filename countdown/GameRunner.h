@@ -31,7 +31,9 @@ public:
         for (auto& game: games) {
             game->initialize();
             
-            game->onBegin();
+            std::string startMessage = game->startMessage();
+            if (!startMessage.empty())
+                std::cout << game->startMessage() << std::endl;
             
             std::cout << game->getGameBoard();
             
@@ -53,10 +55,14 @@ public:
             std::cout << "Enter answer: ";
             std::cin >> answer;
             
-            game->onEnd();
+            std::string endMessage = game->endMessage();
+            if (!endMessage.empty())
+                std::cout << game->endMessage() << std::endl;
             
-            if (t2.elapsed() <= game->answerWaitTime())
+            if (t2.elapsed() <= game->answerWaitTime()) {
                 score += game->getScore(answer);
+            }
+            std::cout << "Current score: " << score << std::endl << std::endl;
         }
         return score;
     }

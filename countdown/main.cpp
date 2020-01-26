@@ -34,7 +34,7 @@ int main(int argc, const char * argv[])
         
     std::vector<IGame*> games;
     LettersGame g1(path, words, 0, 0);
-    NumbersGame g2(path, std::cout, 0, 0);
+    NumbersGame g2(path, 0, 0);
     games.push_back(&g1);
     games.push_back(&g2);
     GameRunner bob(games);

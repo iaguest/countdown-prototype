@@ -26,8 +26,8 @@ public:
     }
 
     std::string getGameBoard() const override;
-    void onBegin() const override {};
-    void onEnd() const override {};
+    std::string startMessage() const override { return std::string(); };
+    std::string endMessage() const override { return std::string(); };
     bool allowInterrupts() const override { return false; }
     int answerWaitTime() const override { return 10; }
     

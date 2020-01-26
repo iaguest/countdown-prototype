@@ -17,11 +17,9 @@ namespace
 
 
 NumbersGame::NumbersGame(const std::string& resourcePath,
-                         std::ostream& os,
                          int numLarge,
                          int numSmall)
   : AbstractGame(resourcePath),
-    os(os),
     numLarge(numLarge),
     numSmall(numSmall)
 {
@@ -44,9 +42,9 @@ void NumbersGame::initialize()
         target = std::uniform_int_distribution<>(100, 999)(gen);
 }
 
-void NumbersGame::onBegin() const
+std::string NumbersGame::startMessage() const
 {
-    os << "Target is: " << target << std::endl;
+    return std::string("Target is: " + std::to_string(target));
 }
 
 int NumbersGame::getScore(const std::string &answer) const

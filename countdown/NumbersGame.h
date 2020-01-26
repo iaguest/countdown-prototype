@@ -18,18 +18,16 @@ class NumbersGame : public AbstractGame<int>
 {
 public:
     NumbersGame(const std::string& resourcePath,
-                std::ostream& os,
                 int numLarge,
                 int numSmall);
 
     void initialize() override;
     
-    void onBegin() const override;
+    std::string startMessage() const override;
     
     int getScore(const std::string &answer) const override;
     
 private:
-    std::ostream& os;
     const int numLarge;
     const int numSmall;
     int target;
