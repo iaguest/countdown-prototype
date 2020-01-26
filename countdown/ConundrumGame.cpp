@@ -1,0 +1,47 @@
+//
+//  ConundrumGame.cpp
+//  countdown
+//
+//  Created by Ian Guest on 26/01/2020.
+//  Copyright © 2020 Ian Guest. All rights reserved.
+//
+
+#include <algorithm>
+#include <iterator>
+
+#include "ConundrumGame.h"
+
+namespace
+{
+    const int conundrumBoardSize = 9;
+}
+
+ConundrumGame::ConundrumGame(const std::string& resourcePath,
+                             const std::vector<std::string>& words)
+  : AbstractGame(resourcePath), words(words)
+{
+}
+
+void ConundrumGame::initialize()
+{
+    std::vector<std::string> nineLetterWords;
+    std::copy_if(begin(words), end(words), std::back_inserter(nineLetterWords),
+             [](const auto& elem) { return elem.size() == conundrumBoardSize; } );
+    
+    int randomIndex = std::uniform_int_distribution<>(0, static_cast<int>(nineLetterWords.size()-1))(gen);
+    nineLetterWord = nineLetterWords[randomIndex];
+    
+    std::string randomWordCopy(begin(nineLetterWord), end(nineLetterWord));
+    std::shuffle(begin(randomWordCopy), end(randomWordCopy), gen);
+    std::copy(begin(randomWordCopy), end(randomWordCopy), std::back_inserter(gameBoard));
+}
+
+std::string ConundrumGame::endMessage() const
+{
+    return std::string("The correct word was " + nineLetterWord);
+}
+
+int ConundrumGame::getScore(const std::string& answer) const
+{
+    return std::equal(begin(answer), end(answer), begin(nineLetterWord)) ? 10 : 0;
+}
