@@ -21,9 +21,9 @@ public:
     IGame& operator=(const IGame&) = delete;
     
     virtual void initialize() = 0;
+    virtual std::string getGameBoard() const = 0;
     virtual void onBegin() const = 0;
     virtual void onEnd() const = 0;
-    virtual std::string getGameBoard() const = 0;
     virtual int getScore(const std::string& answer) const = 0;
     virtual bool allowInterrupts() const = 0;
     virtual int answerWaitTime() const = 0;

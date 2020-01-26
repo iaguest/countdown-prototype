@@ -25,12 +25,11 @@ public:
     {
     }
 
+    std::string getGameBoard() const override;
     void onBegin() const override {};
     void onEnd() const override {};
     bool allowInterrupts() const override { return false; }
     int answerWaitTime() const override { return 10; }
-    
-    std::string getGameBoard() const override;
     
 protected:
     std::mt19937 gen; //Standard mersenne_twister_engine
