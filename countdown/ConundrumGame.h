@@ -24,7 +24,7 @@ public:
     int getScore(const std::string& answer) const override;
     
 private:
-    std::vector<std::string> words;
+    const std::vector<std::string>& words;
     std::string nineLetterWord;
 };
 
