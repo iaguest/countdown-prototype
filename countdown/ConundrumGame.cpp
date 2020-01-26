@@ -28,6 +28,8 @@ void ConundrumGame::initialize()
     std::copy_if(begin(words), end(words), std::back_inserter(nineLetterWords),
              [](const auto& elem) { return elem.size() == conundrumBoardSize; } );
     
+    assert (!nineLetterWords.empty());
+    
     int randomIndex = std::uniform_int_distribution<>(0, static_cast<int>(nineLetterWords.size()-1))(gen);
     nineLetterWord = nineLetterWords[randomIndex];
     
