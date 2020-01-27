@@ -62,6 +62,9 @@ public:
             if (t2.elapsed() <= game->answerWaitTime()) {
                 score += game->getScore(answer);
             }
+            else {
+                std::cout << "Answer time limit exceeded, sorry!" << std::endl;
+            }
             std::cout << "Current score: " << score << std::endl << std::endl;
         }
         return score;
