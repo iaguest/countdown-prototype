@@ -37,8 +37,8 @@ int main(int argc, const char * argv[])
     ConundrumGame g1(path, words);
     LettersGame g2(path, words, 0, 0);
     NumbersGame g3(path, 0, 0);
-    games.push_back(&g1);
-    games.push_back(&g2);
+//    games.push_back(&g1);
+//    games.push_back(&g2);
     games.push_back(&g3);
     GameRunner bob(games);
     std::cout << bob.execute();

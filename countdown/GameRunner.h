@@ -42,7 +42,7 @@ public:
             std::cout << std::endl;
             std::cout << "Start 30 second countdown!" << std::endl;
             Timer t1;
-            while (t1.elapsed() < 30)
+            while (t1.elapsed() < 1)
             {
                 if (isInterruptable) //&& anyKeyPress)
                   break;
@@ -53,7 +53,7 @@ public:
             Timer t2;
             std::string answer;
             std::cout << "Enter answer: ";
-            std::cin >> answer;
+            std::getline(std::cin, answer);
             
             std::string endMessage = game->endMessage();
             if (!endMessage.empty())
