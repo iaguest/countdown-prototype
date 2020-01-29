@@ -99,7 +99,7 @@ std::vector<std::string> getPostFixExpression(const std::vector<std::string>& in
         if (token.size() != 1)
             continue;
         
-        const char tokenChar = token.at(0);
+        const char tokenChar = token.front();
         if (isOperator(tokenChar))
         {
             int tokenPrecedence = opPrecedence.at(tokenChar);
