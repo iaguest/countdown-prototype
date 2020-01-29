@@ -12,4 +12,5 @@
 
 TEST_CASE("This is a test!")
 {
+    REQUIRE(3==4);
 }
