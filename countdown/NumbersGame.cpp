@@ -53,5 +53,7 @@ std::string NumbersGame::startMessage() const
 
 int NumbersGame::getScore(const std::string &answer) const
 {
+    auto a = NumbersGameUtils::getPostFixExpression(NumbersGameUtils::tokenizeExpression( answer ));
+    std::cout << std::accumulate(begin(a), end(a), std::string()) << std::endl;
     return 0;
 }

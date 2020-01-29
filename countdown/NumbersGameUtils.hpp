@@ -20,7 +20,37 @@
 namespace NumbersGameUtils
 {
 
+typedef std::queue<std::string, std::deque<std::string>> Queue;
+
 const std::map<char, int> operatorPrecedence{ {'*', 2}, {'/', 2}, {'+', 1}, {'-', 1} };
+
+bool isOperator(const char& c)
+{
+    return std::find_if(begin(operatorPrecedence), end(operatorPrecedence),
+                        [&c](const auto& p) { return p.first == c; }) != end(operatorPrecedence);
+}
+
+bool isNumber(const std::string& s)
+{
+    return std::all_of(begin(s), end(s), [](const char& c) { return std::isdigit(c); });
+}
+
+bool isLeftParenthesis(const char& c) { return c == '('; }
+
+bool isRightParenthesis(const char& c) { return c == ')'; }
+
+template <class T>
+std::vector<T> makeQueue(const std::queue<T, std::deque<T>>& queue)
+{
+    std::queue<T, std::deque<T>> queueCopy = queue;
+    std::vector<std::string> vec;
+    while (!queueCopy.empty())
+    {
+        vec.push_back(queueCopy.front());
+        queueCopy.pop();
+    }
+    return vec;
+}
 
 inline std::unordered_set<char> getDelimeters()
 {
@@ -53,42 +83,39 @@ inline std::vector<std::string> tokenizeExpression(const std::string& expression
 
 inline std::vector<std::string> getPostFixExpression(const std::vector<std::string>& inFixExpression)
 {
-    typedef std::queue<std::string, std::deque<std::string>> Queue;
-    
     std::stack<char> operatorStack;
-    Queue outputQueue;
-    Queue inFixQueue(std::deque<std::string>(begin(inFixExpression), end(inFixExpression)));
+    Queue outputQueue, inFixQueue(std::deque<std::string>(begin(inFixExpression), end(inFixExpression)));
     
-    /* This implementation does not implement composite functions,functions with variable number of arguments, and unary operators. */
-
     while (!inFixQueue.empty()) {
         const auto token = inFixQueue.front();
         inFixQueue.pop();
-        if (std::all_of(begin(token), end(token), [](const char& c) { return std::isdigit(c); }))
+        
+        if (isNumber(token))
             outputQueue.push(token);
+        
         if (token.size() != 1)
             continue;
-        const char tokenLetter = token.at(0);
-        if (std::find_if(begin(operatorPrecedence), end(operatorPrecedence),
-                         [&tokenLetter](const auto& pair) { return pair.first == tokenLetter; }) != end(operatorPrecedence))
+        
+        const char tokenChar = token.at(0);
+        if (isOperator(tokenChar))
         {
-            int tokenPrecendence = operatorPrecedence.at(tokenLetter);
-            while (!operatorStack.empty() && operatorStack.top() != '(' && operatorPrecedence.at(operatorStack.top()) >= tokenPrecendence) {
+            int tokenPrecedence = operatorPrecedence.at(tokenChar);
+            while (!operatorStack.empty() && !isLeftParenthesis(operatorStack.top()) && operatorPrecedence.at(operatorStack.top()) >= tokenPrecedence) {
                 outputQueue.push(std::string(1, operatorStack.top()));
                 operatorStack.pop();
             }
-            operatorStack.push(tokenLetter);
+            operatorStack.push(tokenChar);
             
         }
-        if (tokenLetter == '(')
-            operatorStack.push(tokenLetter);
-        if (tokenLetter == ')') {
-            while (!operatorStack.empty() && operatorStack.top() != '(') {
+        else if (isLeftParenthesis(tokenChar)) {
+            operatorStack.push(tokenChar);
+        }
+        else if (isRightParenthesis(tokenChar)) {
+            while (!operatorStack.empty() && !isLeftParenthesis(operatorStack.top())) {
                 outputQueue.push(std::string(1, operatorStack.top()));
                 operatorStack.pop();
             }
-            /* if the stack runs out without finding a left paren, then there are mismatched parentheses. */
-            if (!operatorStack.empty() && operatorStack.top() == '(')
+            if (!operatorStack.empty() && isLeftParenthesis(operatorStack.top()))
                 operatorStack.pop();
         }
     }
@@ -100,13 +127,7 @@ inline std::vector<std::string> getPostFixExpression(const std::vector<std::stri
         }
     }
     
-    std::vector<std::string> postFix;
-    while (!outputQueue.empty())
-    {
-        postFix.push_back(outputQueue.front());
-        outputQueue.pop();
-    }
-    return postFix;
+    return makeQueue(outputQueue);
 }
 
 }
