@@ -17,11 +17,13 @@
 
 
 TEST_CASE("tokenizeExpression splits simple expression into tokens.")
+{    
+    REQUIRE_THAT(std::vector<std::string>({ "(", "9", "+", "99", ")", "*", "(", "1", "-", "2", "/", "32", ")" }), 
+                 Catch::Equals(NumbersGameUtils::tokenizeExpression(std::string("(9+99)*(1-2/32)"))));
+}
+
+TEST_CASE("tokenizeExpression ignores spaces.")
 {
-    const std::string expressionString = "(9+99)";
-    const std::vector<std::string> expected { "(", "9", "+", "99", ")" };
-    
-    const std::vector<std::string> result = NumbersGameUtils::tokenizeExpression(expressionString);
-    
-    REQUIRE_THAT(expected, Catch::Equals(result));
+    REQUIRE_THAT(std::vector<std::string>({ "(", "9", "+", "99", ")" }), 
+                 Catch::Equals(NumbersGameUtils::tokenizeExpression(std::string(" ( 9 + 99) "))));
 }
