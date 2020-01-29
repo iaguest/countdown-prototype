@@ -22,12 +22,12 @@ namespace NumbersGameUtils
 
 typedef std::queue<std::string, std::deque<std::string>> Queue;
 
-const std::map<char, int> operatorPrecedence{ {'*', 2}, {'/', 2}, {'+', 1}, {'-', 1} };
+const std::map<char, int> opPrecedence{ {'*', 2}, {'/', 2}, {'+', 1}, {'-', 1} };
 
 bool isOperator(const char& c)
 {
-    return std::find_if(begin(operatorPrecedence), end(operatorPrecedence),
-                        [&c](const auto& p) { return p.first == c; }) != end(operatorPrecedence);
+    return std::find_if(begin(opPrecedence), end(opPrecedence),
+                        [&c](const auto& p) { return p.first == c; }) != end(opPrecedence);
 }
 
 bool isNumber(const std::string& s)
@@ -35,12 +35,12 @@ bool isNumber(const std::string& s)
     return std::all_of(begin(s), end(s), [](const char& c) { return std::isdigit(c); });
 }
 
-bool isLeftParenthesis(const char& c) { return c == '('; }
+bool isLeftParen(const char& c) { return c == '('; }
 
-bool isRightParenthesis(const char& c) { return c == ')'; }
+bool isRightParen(const char& c) { return c == ')'; }
 
 template <class T>
-std::vector<T> makeQueue(const std::queue<T, std::deque<T>>& queue)
+std::vector<T> toVector(const std::queue<T, std::deque<T>>& queue)
 {
     std::queue<T, std::deque<T>> queueCopy = queue;
     std::vector<std::string> vec;
@@ -52,15 +52,15 @@ std::vector<T> makeQueue(const std::queue<T, std::deque<T>>& queue)
     return vec;
 }
 
-inline std::unordered_set<char> getDelimeters()
+std::unordered_set<char> getDelimeters()
 {
     std::unordered_set<char> delimeters{ '(', ')', ' ' };
-    std::transform(begin(operatorPrecedence), end(operatorPrecedence), std::inserter(delimeters, end(delimeters)),
+    std::transform(begin(opPrecedence), end(opPrecedence), std::inserter(delimeters, end(delimeters)),
                    [](const auto& pair) { return pair.first; });
     return delimeters;
 }
 
-inline std::vector<std::string> tokenizeExpression(const std::string& expression) {
+std::vector<std::string> tokenizeExpression(const std::string& expression) {
     std::unordered_set<char> delimeters = getDelimeters();
     std::vector<std::string> tokens;
     std::string number;
@@ -69,6 +69,7 @@ inline std::vector<std::string> tokenizeExpression(const std::string& expression
             number.push_back(c);
         if (delimeters.find(c) == end(delimeters))
             continue;
+        
         if (number.size()) {
             tokens.push_back(number);
             number.clear();
@@ -78,20 +79,22 @@ inline std::vector<std::string> tokenizeExpression(const std::string& expression
     }
     if (number.size())
         tokens.push_back(number);
+    
     return tokens;
 }
 
-inline std::vector<std::string> getPostFixExpression(const std::vector<std::string>& inFixExpression)
+std::vector<std::string> getPostFixExpression(const std::vector<std::string>& inFixExpression)
 {
-    std::stack<char> operatorStack;
+    std::stack<char> opStack;
     Queue outputQueue, inFixQueue(std::deque<std::string>(begin(inFixExpression), end(inFixExpression)));
     
     while (!inFixQueue.empty()) {
+        
         const auto token = inFixQueue.front();
         inFixQueue.pop();
         
         if (isNumber(token))
-            outputQueue.push(token);
+            outputQueue.push(token);      
         
         if (token.size() != 1)
             continue;
@@ -99,35 +102,34 @@ inline std::vector<std::string> getPostFixExpression(const std::vector<std::stri
         const char tokenChar = token.at(0);
         if (isOperator(tokenChar))
         {
-            int tokenPrecedence = operatorPrecedence.at(tokenChar);
-            while (!operatorStack.empty() && !isLeftParenthesis(operatorStack.top()) && operatorPrecedence.at(operatorStack.top()) >= tokenPrecedence) {
-                outputQueue.push(std::string(1, operatorStack.top()));
-                operatorStack.pop();
+            int tokenPrecedence = opPrecedence.at(tokenChar);
+            while (!opStack.empty() && !isLeftParen(opStack.top()) && opPrecedence.at(opStack.top()) >= tokenPrecedence) {
+                outputQueue.push(std::string(1, opStack.top()));
+                opStack.pop();
             }
-            operatorStack.push(tokenChar);
-            
+            opStack.push(tokenChar);
         }
-        else if (isLeftParenthesis(tokenChar)) {
-            operatorStack.push(tokenChar);
+        else if (isLeftParen(tokenChar)) {
+            opStack.push(tokenChar);
         }
-        else if (isRightParenthesis(tokenChar)) {
-            while (!operatorStack.empty() && !isLeftParenthesis(operatorStack.top())) {
-                outputQueue.push(std::string(1, operatorStack.top()));
-                operatorStack.pop();
+        else if (isRightParen(tokenChar)) {
+            while (!opStack.empty() && !isLeftParen(opStack.top())) {
+                outputQueue.push(std::string(1, opStack.top()));
+                opStack.pop();
             }
-            if (!operatorStack.empty() && isLeftParenthesis(operatorStack.top()))
-                operatorStack.pop();
-        }
-    }
-
-    if (!operatorStack.empty()) {
-        while (!operatorStack.empty()) {      
-            outputQueue.push(std::string(1, operatorStack.top()));
-            operatorStack.pop();
+            if (!opStack.empty() && isLeftParen(opStack.top()))
+                opStack.pop();
         }
     }
     
-    return makeQueue(outputQueue);
+    if (!opStack.empty()) {
+        while (!opStack.empty()) {      
+            outputQueue.push(std::string(1, opStack.top()));
+            opStack.pop();
+        }
+    }    
+    
+    return toVector(outputQueue);
 }
 
 }
