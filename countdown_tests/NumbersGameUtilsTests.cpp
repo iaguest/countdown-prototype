@@ -30,6 +30,11 @@ TEST_CASE("tokenizeExpression ignores spaces.")
                  Catch::Equals(tokenizeExpression(" ( 9 + 99) ")));
 }
 
+TEST_CASE("tokenizeExpression handles empty expression.")
+{
+    REQUIRE_NOTHROW(tokenizeExpression(""));
+}
+
 TEST_CASE("getPostFixExpression converts simple infix expression.")
 {
     const std::vector<std::string>& result = getPostFixExpression(tokenizeExpression("3+4"));
@@ -41,4 +46,9 @@ TEST_CASE("getPostFixExpression converts more complicated infix expression.")
     const std::vector<std::string>& result = getPostFixExpression(tokenizeExpression("4+18/(9-3)"));
     
     REQUIRE_THAT(std::vector<std::string>({"4","18","9","3","-","/","+"}), Catch::Equals(result));
+}
+
+TEST_CASE("getPostFixExpression handles empty infix expression.")
+{
+    REQUIRE_NOTHROW(getPostFixExpression(std::vector<std::string>()));
 }
