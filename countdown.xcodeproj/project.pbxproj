@@ -13,7 +13,7 @@
 		6AA8220823DB1833003CA7FC /* Io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220723DB1833003CA7FC /* Io.cpp */; };
 		6AA8220E23DB1A69003CA7FC /* NumbersGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220C23DB1A69003CA7FC /* NumbersGame.cpp */; };
 		6AA8221623DDEF27003CA7FC /* ConundrumGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */; };
-		6ACAE9CE23E1A3600018DCD2 /* FirstCatchTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6ACAE9CD23E1A3600018DCD2 /* FirstCatchTest.cpp */; };
+		6ACAE9D023E1A5E80018DCD2 /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6ACAE9CF23E1A5E80018DCD2 /* Test.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,7 +57,7 @@
 		6AA8221423DDEE36003CA7FC /* ConundrumGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConundrumGame.h; sourceTree = "<group>"; };
 		6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConundrumGame.cpp; sourceTree = "<group>"; };
 		6ACAE9C623E1A2E80018DCD2 /* countdown_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = countdown_tests; sourceTree = BUILT_PRODUCTS_DIR; };
-		6ACAE9CD23E1A3600018DCD2 /* FirstCatchTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FirstCatchTest.cpp; sourceTree = "<group>"; };
+		6ACAE9CF23E1A5E80018DCD2 /* Test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 		6ACAE9C723E1A2E80018DCD2 /* countdown_tests */ = {
 			isa = PBXGroup;
 			children = (
-				6ACAE9CD23E1A3600018DCD2 /* FirstCatchTest.cpp */,
+				6ACAE9CF23E1A5E80018DCD2 /* Test.cpp */,
 			);
 			path = countdown_tests;
 			sourceTree = "<group>";
@@ -219,7 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6ACAE9CE23E1A3600018DCD2 /* FirstCatchTest.cpp in Sources */,
+				6ACAE9D023E1A5E80018DCD2 /* Test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
