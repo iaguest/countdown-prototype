@@ -13,10 +13,20 @@
 		6AA8220823DB1833003CA7FC /* Io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220723DB1833003CA7FC /* Io.cpp */; };
 		6AA8220E23DB1A69003CA7FC /* NumbersGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220C23DB1A69003CA7FC /* NumbersGame.cpp */; };
 		6AA8221623DDEF27003CA7FC /* ConundrumGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */; };
+		6ACAE9CE23E1A3600018DCD2 /* FirstCatchTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6ACAE9CD23E1A3600018DCD2 /* FirstCatchTest.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		6AA821D623D0ECF2003CA7FC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		6ACAE9C423E1A2E80018DCD2 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -46,10 +56,19 @@
 		6AA8221123DDD01D003CA7FC /* IGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGame.h; sourceTree = "<group>"; };
 		6AA8221423DDEE36003CA7FC /* ConundrumGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConundrumGame.h; sourceTree = "<group>"; };
 		6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConundrumGame.cpp; sourceTree = "<group>"; };
+		6ACAE9C623E1A2E80018DCD2 /* countdown_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = countdown_tests; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ACAE9CD23E1A3600018DCD2 /* FirstCatchTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FirstCatchTest.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6AA821D523D0ECF2003CA7FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ACAE9C323E1A2E80018DCD2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -63,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				6AA821DA23D0ECF2003CA7FC /* countdown */,
+				6ACAE9C723E1A2E80018DCD2 /* countdown_tests */,
 				6AA821D923D0ECF2003CA7FC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				6AA821D823D0ECF2003CA7FC /* countdown */,
+				6ACAE9C623E1A2E80018DCD2 /* countdown_tests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,6 +120,14 @@
 			path = countdown;
 			sourceTree = "<group>";
 		};
+		6ACAE9C723E1A2E80018DCD2 /* countdown_tests */ = {
+			isa = PBXGroup;
+			children = (
+				6ACAE9CD23E1A3600018DCD2 /* FirstCatchTest.cpp */,
+			);
+			path = countdown_tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,6 +148,23 @@
 			productReference = 6AA821D823D0ECF2003CA7FC /* countdown */;
 			productType = "com.apple.product-type.tool";
 		};
+		6ACAE9C523E1A2E80018DCD2 /* countdown_tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6ACAE9CC23E1A2E80018DCD2 /* Build configuration list for PBXNativeTarget "countdown_tests" */;
+			buildPhases = (
+				6ACAE9C223E1A2E80018DCD2 /* Sources */,
+				6ACAE9C323E1A2E80018DCD2 /* Frameworks */,
+				6ACAE9C423E1A2E80018DCD2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = countdown_tests;
+			productName = countdown_tests;
+			productReference = 6ACAE9C623E1A2E80018DCD2 /* countdown_tests */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -129,6 +175,9 @@
 				ORGANIZATIONNAME = "Ian Guest";
 				TargetAttributes = {
 					6AA821D723D0ECF2003CA7FC = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					6ACAE9C523E1A2E80018DCD2 = {
 						CreatedOnToolsVersion = 11.3;
 					};
 				};
@@ -147,6 +196,7 @@
 			projectRoot = "";
 			targets = (
 				6AA821D723D0ECF2003CA7FC /* countdown */,
+				6ACAE9C523E1A2E80018DCD2 /* countdown_tests */,
 			);
 		};
 /* End PBXProject section */
@@ -162,6 +212,14 @@
 				6AA8221623DDEF27003CA7FC /* ConundrumGame.cpp in Sources */,
 				6AA8220823DB1833003CA7FC /* Io.cpp in Sources */,
 				6AA8220E23DB1A69003CA7FC /* NumbersGame.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ACAE9C223E1A2E80018DCD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6ACAE9CE23E1A3600018DCD2 /* FirstCatchTest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +351,24 @@
 			};
 			name = Release;
 		};
+		6ACAE9CA23E1A2E80018DCD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6ACAE9CB23E1A2E80018DCD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -310,6 +386,15 @@
 			buildConfigurations = (
 				6AA821E023D0ECF2003CA7FC /* Debug */,
 				6AA821E123D0ECF2003CA7FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6ACAE9CC23E1A2E80018DCD2 /* Build configuration list for PBXNativeTarget "countdown_tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6ACAE9CA23E1A2E80018DCD2 /* Debug */,
+				6ACAE9CB23E1A2E80018DCD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
