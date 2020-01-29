@@ -74,13 +74,10 @@ std::vector<std::string> getPostFixExpression(const std::vector<std::string>& in
         if (std::find_if(begin(operatorPrecedence), end(operatorPrecedence),
                          [&tokenLetter](const auto& pair) { return pair.first == tokenLetter; }) != end(operatorPrecedence))
         {
-            if (!operatorStack.empty())
-            {
-                int tokenPrecendence = operatorPrecedence.at(tokenLetter);
-                while (operatorStack.top() != '(' && operatorPrecedence.at(operatorStack.top()) >= tokenPrecendence) {
-                    outputQueue.push(std::string(1, operatorStack.top()));
-                    operatorStack.pop();
-                }
+            int tokenPrecendence = operatorPrecedence.at(tokenLetter);
+            while (!operatorStack.empty() && operatorStack.top() != '(' && operatorPrecedence.at(operatorStack.top()) >= tokenPrecendence) {
+                outputQueue.push(std::string(1, operatorStack.top()));
+                operatorStack.pop();
             }
             operatorStack.push(tokenLetter);
             
