@@ -35,17 +35,27 @@ TEST_CASE("tokenizeExpression handles empty expression.")
     REQUIRE_NOTHROW(tokenizeExpression(""));
 }
 
-TEST_CASE("getPostFixExpression converts simple infix expression.")
+TEST_CASE("getPostFixExpression converts trivial infix expression with one operator.")
 {
     const std::vector<std::string>& result = getPostFixExpression(tokenizeExpression("3+4"));
     REQUIRE_THAT(std::vector<std::string>({"3","4","+"}), Catch::Equals(result));
 }
 
-TEST_CASE("getPostFixExpression converts more complicated infix expression.")
+TEST_CASE("getPostFixExpression converts simple infix expression with balanced parentheses.")
 {
     const std::vector<std::string>& result = getPostFixExpression(tokenizeExpression("4+18/(9-3)"));
     
     REQUIRE_THAT(std::vector<std::string>({"4","18","9","3","-","/","+"}), Catch::Equals(result));
+}
+
+TEST_CASE("getPostFixExpression converts complicated infix expression with balanced parentheses")
+{
+    const std::vector<std::string>& result =
+        getPostFixExpression(tokenizeExpression("((15 / (7 - (1 + 1))) * 3) - (2 + (1 + 1)) "));
+    
+    REQUIRE_THAT(std::vector<std::string>(
+                     {"15","7","1","1","+","-","/","3","*","2","1","1","+","+","-"}),
+                 Catch::Equals(result));
 }
 
 TEST_CASE("getPostFixExpression handles empty infix expression.")
