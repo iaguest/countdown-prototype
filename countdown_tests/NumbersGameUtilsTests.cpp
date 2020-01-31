@@ -62,3 +62,18 @@ TEST_CASE("getPostFixExpression handles empty infix expression.")
 {
     REQUIRE_NOTHROW(getPostFixExpression(std::vector<std::string>()));
 }
+
+TEST_CASE("evaluatePostFix expression returns correct result for simple expression.")
+{
+    const std::vector<std::string>& postFix = getPostFixExpression(tokenizeExpression("1+2"));
+    
+    REQUIRE_THAT(evaluatePostFixExpression(postFix), Catch::WithinRel(3.0, 1.0E-9));
+}
+          
+TEST_CASE("evaluatePostFix expression returns correct result for complex expression.")
+{
+    const std::vector<std::string>& postFix =
+        getPostFixExpression(tokenizeExpression("((15 / (7 - (1 + 1))) * 3) - (2 + (1 + 1)) "));
+    
+    REQUIRE_THAT(evaluatePostFixExpression(postFix), Catch::WithinRel(5.0, 1.0E-9));
+}
