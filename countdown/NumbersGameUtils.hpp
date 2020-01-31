@@ -93,14 +93,18 @@ std::vector<std::string> getPostFixExpression(const std::vector<std::string>& in
     std::stack<char> opStack;
     Queue outputQueue, inFixQueue(std::deque<std::string>(begin(inFixExpression), end(inFixExpression)));
     
-    while (!inFixQueue.empty()) {
-        
+    auto moveTopOperatorOnStackToOutputQueue = [&opStack, &outputQueue]()
+    {
+        outputQueue.push(std::string(1, opStack.top()));
+        opStack.pop();
+    };
+    
+    while (!inFixQueue.empty()) {        
         const auto token = inFixQueue.front();
         inFixQueue.pop();
         
         if (isNumber(token))
             outputQueue.push(token);      
-        
         if (token.size() != 1)
             continue;
         
@@ -108,30 +112,24 @@ std::vector<std::string> getPostFixExpression(const std::vector<std::string>& in
         if (isOperator(tokenChar))
         {
             int tokenPrecedence = opPrecedence.at(tokenChar);
-            while (!opStack.empty() && !isLeftParen(opStack.top()) && opPrecedence.at(opStack.top()) >= tokenPrecedence) {
-                outputQueue.push(std::string(1, opStack.top()));
-                opStack.pop();
-            }
+            while (!opStack.empty() && !isLeftParen(opStack.top()) && opPrecedence.at(opStack.top()) >= tokenPrecedence)
+                moveTopOperatorOnStackToOutputQueue();
             opStack.push(tokenChar);
         }
         else if (isLeftParen(tokenChar)) {
             opStack.push(tokenChar);
         }
         else if (isRightParen(tokenChar)) {
-            while (!opStack.empty() && !isLeftParen(opStack.top())) {
-                outputQueue.push(std::string(1, opStack.top()));
-                opStack.pop();
-            }
+            while (!opStack.empty() && !isLeftParen(opStack.top()))
+                moveTopOperatorOnStackToOutputQueue();
             if (!opStack.empty() && isLeftParen(opStack.top()))
                 opStack.pop();
         }
     }
     
     if (!opStack.empty()) {
-        while (!opStack.empty()) {      
-            outputQueue.push(std::string(1, opStack.top()));
-            opStack.pop();
-        }
+        while (!opStack.empty())    
+            moveTopOperatorOnStackToOutputQueue();
     }    
     
     return toVector(outputQueue);
