@@ -20,7 +20,8 @@ using namespace NumbersGameUtils;
 
 TEST_CASE("tokenizeExpression splits simple expression into tokens.")
 {    
-    REQUIRE_THAT(std::vector<std::string>({ "(", "9", "+", "99", ")", "*", "(", "1", "-", "2", "/", "32", ")" }), 
+    REQUIRE_THAT(std::vector<std::string>(
+                     { "(", "9", "+", "99", ")", "*", "(", "1", "-", "2", "/", "32", ")" }), 
                  Catch::Equals(tokenizeExpression("(9+99)*(1-2/32)")));
 }
 
@@ -63,17 +64,86 @@ TEST_CASE("getPostFixExpression handles empty infix expression.")
     REQUIRE_NOTHROW(getPostFixExpression(std::vector<std::string>()));
 }
 
-TEST_CASE("evaluatePostFix expression returns correct result for simple expression.")
+TEST_CASE("tryEvaluateExpression returns correct result for trivial expression.")
 {
-    const std::vector<std::string>& postFix = getPostFixExpression(tokenizeExpression("1+2"));
+    double result = 0;
     
-    REQUIRE_THAT(evaluatePostFixExpression(postFix), Catch::WithinRel(3.0, 1.0E-9));
+    SECTION("Single value.") {
+        CHECK(tryEvaluateExpression("42", result));
+        REQUIRE_THAT(result, Catch::WithinRel(42.0, 1.0E-9));
+    }
+    
+    SECTION("Single value with balanced parentheses.") {
+        CHECK(tryEvaluateExpression("(999)", result));
+        REQUIRE_THAT(result, Catch::WithinRel(999.0, 1.0E-9));
+    }
+}
+
+TEST_CASE("tryEvaluateExpression returns correct result for simple expression.")
+{
+    double result;
+    bool isSuccess = tryEvaluateExpression("1+2", result);
+    
+    CHECK(isSuccess);
+    REQUIRE_THAT(result, Catch::WithinRel(3.0, 1.0E-9));
 }
           
-TEST_CASE("evaluatePostFix expression returns correct result for complex expression.")
+TEST_CASE("tryEvaluateExpression returns correct result for complex expression.")
 {
-    const std::vector<std::string>& postFix =
-        getPostFixExpression(tokenizeExpression("((15 / (7 - (1 + 1))) * 3) - (2 + (1 + 1)) "));
+    double result;
+    bool isSuccess = tryEvaluateExpression("((15 / (7 - (1 + 1))) * 3) - (2 + (1 + 1)) ", result);
     
-    REQUIRE_THAT(evaluatePostFixExpression(postFix), Catch::WithinRel(5.0, 1.0E-9));
+    CHECK(isSuccess);
+    REQUIRE_THAT(result, Catch::WithinRel(5.0, 1.0E-9));
+}
+
+TEST_CASE("tryEvaluateExpression returns false for empty expression.")
+{
+    double result = 0;
+    REQUIRE(!tryEvaluateExpression("", result));
+}
+
+TEST_CASE("tryEvaluateExpression fails for malformed expression.")
+{
+    double result = 0;
+    
+    SECTION("Insufficient arguments for operator test 1.") {
+        REQUIRE(!tryEvaluateExpression("+", result));
+    }
+    
+    SECTION("Insufficient arguments for operator test 2.") {
+        REQUIRE(!tryEvaluateExpression("1+", result));
+    }
+    
+    SECTION("Insufficient arguments for operator test 3.") {
+        REQUIRE(!tryEvaluateExpression("+1", result));
+    }
+    
+    SECTION("Unbalanced parentheses test 1.") {
+        REQUIRE(!tryEvaluateExpression("1+1)", result));
+    }
+    
+    SECTION("Unbalanced parentheses test 2.") {
+        REQUIRE(!tryEvaluateExpression("(1+1", result));
+    }
+    
+    SECTION("Unbalanced parentheses test 3.") {
+        REQUIRE(!tryEvaluateExpression("((9/27 )+7))", result));
+    }
+    
+    SECTION("Invalid operator test 1.") {
+        REQUIRE(!tryEvaluateExpression("1**2", result));
+    }
+    
+    SECTION("Invalid operator test 2.") {
+        REQUIRE(!tryEvaluateExpression("1+-2", result));
+    }
+    
+    SECTION("Invalid operator test 3.") {
+        REQUIRE(!tryEvaluateExpression("3^2", result));
+    }
+    
+    SECTION("Invalid characters.") {
+        REQUIRE(!tryEvaluateExpression("bob", result));
+    }
 }
