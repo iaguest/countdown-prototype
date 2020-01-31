@@ -51,7 +51,12 @@ std::string NumbersGame::startMessage() const
     return std::string("Target is: " + std::to_string(target));
 }
 
-int NumbersGame::getScore(const std::string &answer) const
+int NumbersGame::getScore(const std::string& answer) const
 {
+    double value;
+    if (NumbersGameUtils::tryEvaluateExpression(answer, value)) {
+        double abs_diff = abs(target - value);
+        return abs_diff < 10 ? 10 - abs_diff : 0;
+    }
     return 0;
 }
