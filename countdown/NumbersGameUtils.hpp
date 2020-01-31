@@ -35,7 +35,7 @@ bool isOperator(const char& c)
                         [&c](const auto& p) { return p.first == c; }) != end(opPrecedence);
 }
 
-bool isNumber(const std::string& s)
+bool isIntegerNumber(const std::string& s)
 {
     return std::all_of(begin(s), end(s), [](const char& c) { return std::isdigit(c); });
 }
@@ -43,6 +43,12 @@ bool isNumber(const std::string& s)
 bool isLeftParen(const char& c) { return c == '('; }
 
 bool isRightParen(const char& c) { return c == ')'; }
+
+bool isBalancedParens(const std::string& expression)
+{
+    return (std::count(begin(expression), end(expression), '(') ==
+            std::count(begin(expression), end(expression), ')'));
+}
 
 template <class T>
 std::vector<T> toVector(const std::queue<T, std::deque<T>>& queue)
@@ -63,6 +69,14 @@ std::unordered_set<char> getDelimeters()
     std::transform(begin(opPrecedence), end(opPrecedence), std::inserter(delimeters, end(delimeters)),
                    [](const auto& pair) { return pair.first; });
     return delimeters;
+}
+
+bool isInvalidChars(const std::string& expression)
+{
+    const auto& delim = getDelimeters();
+    return std::find_if(begin(expression), end(expression),
+                        [&](const char& c) { return !isdigit(c) && delim.find(c) == end(delim); })
+           != end(expression);
 }
 
 std::vector<std::string> tokenizeExpression(const std::string& expression) {
@@ -103,7 +117,7 @@ std::vector<std::string> getPostFixExpression(const std::vector<std::string>& in
         const auto token = inFixQueue.front();
         inFixQueue.pop();
         
-        if (isNumber(token))
+        if (isIntegerNumber(token))
             outputQueue.push(token);      
         if (token.size() != 1)
             continue;
@@ -135,25 +149,40 @@ std::vector<std::string> getPostFixExpression(const std::vector<std::string>& in
     return toVector(outputQueue);
 }
 
-double evaluatePostFixExpression(const std::vector<std::string>& postFixExpression)
+bool tryEvaluateExpression(const std::string& expression, double& result)
 {
-    std::stack<std::string> stack;
+    result = 0;
     
-    for (const auto& token: postFixExpression)
+    if (isInvalidChars(expression) || !isBalancedParens(expression))
+        return false;
+    
+    std::stack<std::string> stack;
+    for (const auto& token: getPostFixExpression(tokenizeExpression(expression)))
     {
       if (token.size() == 1 && isOperator(token.front()))
       {
+          if (stack.size() < 2)
+              return false;
+          
           double operand2 = std::stod(stack.top());
           stack.pop();
           double operand1 = std::stod(stack.top());
           stack.pop();
-          double result = opFunction.at(token.front())(operand1, operand2);
-          stack.push(std::to_string(result));
+          
+          try {
+              stack.push(std::to_string(opFunction.at(token.front())(operand1, operand2)));
+          }
+          catch (const std::exception& e) { 
+              return false;
+          }
       }
       else // token is an operand
           stack.push(token);
     }
-    return std::stod(stack.top());
+    
+    if (!stack.empty())
+        result = std::stod(stack.top());
+    return stack.size() == 1;
 }
 
 }
