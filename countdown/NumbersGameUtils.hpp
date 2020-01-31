@@ -10,6 +10,7 @@
 #define NumbersGameUtils_hpp
 
 #include <deque>
+#include <functional>
 #include <map>
 #include <queue>
 #include <stack>
@@ -22,7 +23,11 @@ namespace NumbersGameUtils
 
 typedef std::queue<std::string, std::deque<std::string>> Queue;
 
-const std::map<char, int> opPrecedence{ {'*', 2}, {'/', 2}, {'+', 1}, {'-', 1} };
+const std::map<char, int>
+    opPrecedence{ {'*', 2}, {'/', 2}, {'+', 1}, {'-', 1} };
+
+const std::map<char, std::function<double(double, double)>>
+    opFunction{ {'*', std::multiplies<>()}, {'/', std::divides<>()}, {'+', std::plus<>()}, {'-', std::minus<>()} };
 
 bool isOperator(const char& c)
 {
