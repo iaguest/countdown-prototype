@@ -135,6 +135,27 @@ std::vector<std::string> getPostFixExpression(const std::vector<std::string>& in
     return toVector(outputQueue);
 }
 
+double evaluatePostFixExpression(const std::vector<std::string>& postFixExpression)
+{
+    std::stack<std::string> stack;
+    
+    for (const auto& token: postFixExpression)
+    {
+      if (token.size() == 1 && isOperator(token.front()))
+      {
+          double operand2 = std::stod(stack.top());
+          stack.pop();
+          double operand1 = std::stod(stack.top());
+          stack.pop();
+          double result = opFunction.at(token.front())(operand1, operand2);
+          stack.push(std::to_string(result));
+      }
+      else // token is an operand
+          stack.push(token);
+    }
+    return std::stod(stack.top());
+}
+
 }
 
 #endif /* NumbersGameUtils_hpp */
