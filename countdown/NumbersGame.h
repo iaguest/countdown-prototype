@@ -25,7 +25,10 @@ public:
     
     std::string startMessage() const override;
     
-    int getScore(const std::string &answer) const override;
+    int getScore(const std::string& answer) const override;
+
+private:
+    bool validNumbersInAnswer(const std::string& answer) const;
     
 private:
     const int numLarge;

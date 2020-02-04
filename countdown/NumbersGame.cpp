@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <random>
+#include <regex>
 #include <string>
 
 #include "NumbersGame.h"
@@ -54,9 +55,29 @@ std::string NumbersGame::startMessage() const
 int NumbersGame::getScore(const std::string& answer) const
 {
     double value;
-    if (NumbersGameUtils::tryEvaluateExpression(answer, value)) {
+    if (validNumbersInAnswer(answer) && NumbersGameUtils::tryEvaluateExpression(answer, value))
+    {
         double abs_diff = abs(target - value);
         return abs_diff < 10 ? 10 - abs_diff : 0;
     }
     return 0;
+}
+
+bool NumbersGame::validNumbersInAnswer(const std::string& answer) const
+{
+    typedef std::sregex_iterator regex_iter;
+    
+    std::vector<int> answer_nums;
+    std::regex re("\\d+");
+    for (auto i = regex_iter(begin(answer), end(answer), re); i != regex_iter(); ++i)
+        answer_nums.push_back(std::stoi(i->str())); 
+    std::sort(begin(answer_nums), end(answer_nums));
+    
+    std::vector<int> gameBoardCopy(begin(gameBoard), end(gameBoard));
+    std::sort(begin(gameBoardCopy), end(gameBoardCopy));
+    
+    std::vector<int> diffs;
+    std::set_difference(begin(answer_nums), end(answer_nums), begin(gameBoardCopy), end(gameBoardCopy),                         std::back_inserter(diffs));
+    
+    return diffs.empty();
 }
