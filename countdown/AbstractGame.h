@@ -20,8 +20,8 @@ template <typename T>
 class AbstractGame : public IGame
 {
 public:
-    AbstractGame(const std::string& resourcePath)
-    : gen(std::random_device{}()), path(resourcePath)
+    AbstractGame()
+    : gen(std::random_device{}())
     {
     }
 
@@ -33,7 +33,6 @@ public:
     
 protected:
     std::mt19937 gen; //Standard mersenne_twister_engine
-    const std::string& path;
     std::vector<T> gameBoard;
 };
 

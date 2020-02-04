@@ -17,9 +17,7 @@
 class NumbersGame : public AbstractGame<int>
 {
 public:
-    NumbersGame(const std::string& resourcePath,
-                int numLarge,
-                int numSmall);
+    NumbersGame(int numLarge, int numSmall);
 
     void initialize() override;
     

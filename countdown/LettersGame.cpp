@@ -19,11 +19,12 @@ namespace
 }
 
 
-LettersGame::LettersGame(const std::string& resourcePath,
+LettersGame::LettersGame(const std::vector<char>& letters,
                          const std::vector<std::string>& words,
                          int numConsonants,
                          int numVowels)
-  : AbstractGame(resourcePath),
+  : AbstractGame(),
+    letters(letters),
     words(words),
     numConsonants(numConsonants),
     numVowels(numVowels)
@@ -32,11 +33,6 @@ LettersGame::LettersGame(const std::string& resourcePath,
 
 void LettersGame::initialize()
 {
-    // TODO: Use correct number of consonants and vowels.
-    
-    std::vector<char> letters = Io::getLetters(path, letterDistributionFileName);
-    assert (letters.size());
-    
     std::shuffle(begin(letters), end(letters), gen);
     
     std::sample(begin(letters), end(letters), std::back_inserter(gameBoard),

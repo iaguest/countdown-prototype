@@ -21,10 +21,8 @@ constexpr int numbersBoardSize = 6;
 }  // end namespace
 
 
-NumbersGame::NumbersGame(const std::string& resourcePath,
-                         int numLarge,
-                         int numSmall)
-  : AbstractGame(resourcePath),
+NumbersGame::NumbersGame(int numLarge, int numSmall)
+  : AbstractGame(),
     numLarge(numLarge),
     numSmall(numSmall)
 {

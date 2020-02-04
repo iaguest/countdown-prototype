@@ -16,8 +16,7 @@
 class ConundrumGame : public AbstractGame<char>
 {
 public:
-    ConundrumGame(const std::string& resourcePath,
-                  const std::vector<std::string>& words);
+    ConundrumGame(const std::vector<std::string>& words);
     
     void initialize() override;
     std::string endMessage() const override;

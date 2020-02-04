@@ -17,7 +17,7 @@
 class LettersGame : public AbstractGame<char>
 {
 public:
-    LettersGame(const std::string& resourcePath,
+    LettersGame(const std::vector<char>& letters,
                 const std::vector<std::string>& words,
                 int numConsonants,
                 int numVowels);
@@ -30,6 +30,7 @@ private:
     std::vector<std::string> getSolutionWords(const std::vector<std::string>& words,
                                               std::vector<char> lettersBoard) const;
 private:
+    std::vector<char> letters;
     const std::vector<std::string>& words;
     const int numConsonants;
     const int numVowels;
