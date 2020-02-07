@@ -13,6 +13,9 @@
 		6AA8220823DB1833003CA7FC /* Io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220723DB1833003CA7FC /* Io.cpp */; };
 		6AA8220E23DB1A69003CA7FC /* NumbersGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220C23DB1A69003CA7FC /* NumbersGame.cpp */; };
 		6AA8221623DDEF27003CA7FC /* ConundrumGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */; };
+		6AAE59C223EDCABD002860B6 /* NumbersGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220C23DB1A69003CA7FC /* NumbersGame.cpp */; };
+		6AAE59C423EDCB9D002860B6 /* NumbersGameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */; };
+		6AAE59C523EDCD95002860B6 /* NumbersGameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */; };
 		6ACAE9D023E1A5E80018DCD2 /* NumbersGameUtilsTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6ACAE9CF23E1A5E80018DCD2 /* NumbersGameUtilsTests.cpp */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +59,7 @@
 		6AA8221123DDD01D003CA7FC /* IGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGame.h; sourceTree = "<group>"; };
 		6AA8221423DDEE36003CA7FC /* ConundrumGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConundrumGame.h; sourceTree = "<group>"; };
 		6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConundrumGame.cpp; sourceTree = "<group>"; };
+		6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGameUtils.cpp; sourceTree = "<group>"; };
 		6ACAE9C623E1A2E80018DCD2 /* countdown_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = countdown_tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACAE9CF23E1A5E80018DCD2 /* NumbersGameUtilsTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGameUtilsTests.cpp; sourceTree = "<group>"; };
 		6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NumbersGameUtils.hpp; sourceTree = "<group>"; };
@@ -79,12 +83,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A9C1C3423EDC64F006C21DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6AA821CF23D0ECF2003CA7FC = {
 			isa = PBXGroup;
 			children = (
 				6AA821DA23D0ECF2003CA7FC /* countdown */,
 				6ACAE9C723E1A2E80018DCD2 /* countdown_tests */,
 				6AA821D923D0ECF2003CA7FC /* Products */,
+				6A9C1C3423EDC64F006C21DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +130,7 @@
 				6AA8221423DDEE36003CA7FC /* ConundrumGame.h */,
 				6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */,
 				6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.hpp */,
+				6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */,
 			);
 			path = countdown;
 			sourceTree = "<group>";
@@ -209,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AA821DC23D0ECF2003CA7FC /* main.cpp in Sources */,
+				6AAE59C423EDCB9D002860B6 /* NumbersGameUtils.cpp in Sources */,
 				6AA8220423DB1101003CA7FC /* Constants.cpp in Sources */,
 				6AA8220123DAF57B003CA7FC /* LettersGame.cpp in Sources */,
 				6AA8221623DDEF27003CA7FC /* ConundrumGame.cpp in Sources */,
@@ -221,6 +235,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AAE59C523EDCD95002860B6 /* NumbersGameUtils.cpp in Sources */,
+				6AAE59C223EDCABD002860B6 /* NumbersGame.cpp in Sources */,
 				6ACAE9D023E1A5E80018DCD2 /* NumbersGameUtilsTests.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
