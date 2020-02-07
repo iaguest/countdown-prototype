@@ -12,5 +12,5 @@
 
 TEST_CASE("NumbersGame construction succeeds.")
 {
-    NumbersGame(1, 1);
+    REQUIRE_NOTHROW(NumbersGame(1, 1));
 }
