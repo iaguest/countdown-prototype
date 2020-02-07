@@ -16,7 +16,7 @@
 class ConundrumGame : public AbstractGame<char>
 {
 public:
-    explicit ConundrumGame(const std::vector<std::string>& words);
+    explicit ConundrumGame(std::mt19937& gen, const std::vector<std::string>& words);
     
     void initialize() override;
     std::string endMessage() const override;

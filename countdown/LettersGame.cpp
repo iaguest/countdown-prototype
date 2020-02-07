@@ -19,11 +19,12 @@ namespace
 }
 
 
-LettersGame::LettersGame(const std::vector<char>& letters,
+LettersGame::LettersGame(std::mt19937& gen,
+                         const std::vector<char>& letters,
                          const std::vector<std::string>& words,
                          int numConsonants,
                          int numVowels)
-  : AbstractGame(),
+  : AbstractGame(gen),
     letters(letters),
     words(words),
     numConsonants(numConsonants),

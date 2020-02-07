@@ -17,7 +17,7 @@
 class NumbersGame : public AbstractGame<int>
 {
 public:
-    explicit NumbersGame(int numLarge, int numSmall);
+    explicit NumbersGame(std::mt19937& gen, int numLarge, int numSmall);
 
     void initialize() override;
     

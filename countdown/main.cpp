@@ -29,17 +29,19 @@
 
 int main(int argc, const char * argv[])
 {
+    std::mt19937 gen(std::random_device{}());
+    
     const std::string path = "/Users/ianguest/C++/countdown/countdown";
     
     std::vector<char> letters = Io::getLetters(path, "letter_distribution.txt");
     std::vector<std::string> words = Io::getWords(path, Constants::dictionaryWordsFileName);
         
     std::vector<IGame*> games;
-    ConundrumGame g1(words);
-    LettersGame g2(letters, words, 0, 0);
-    NumbersGame g3(0, 0);
-    games.push_back(&g1);
-    games.push_back(&g2);
+    ConundrumGame g1(gen, words);
+    LettersGame g2(gen, letters, words, 0, 0);
+    NumbersGame g3(gen, 0, 0);
+//    games.push_back(&g1);
+//    games.push_back(&g2);
     games.push_back(&g3);
     GameRunner bob(games);
     std::cout << bob.execute();

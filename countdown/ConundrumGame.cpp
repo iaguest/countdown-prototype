@@ -16,8 +16,9 @@ namespace
     const int conundrumBoardSize = 9;
 }
 
-ConundrumGame::ConundrumGame(const std::vector<std::string>& words)
-  : AbstractGame(), words(words)
+ConundrumGame::ConundrumGame(std::mt19937& gen,
+                             const std::vector<std::string>& words)
+  : AbstractGame(gen), words(words)
 {
 }
 

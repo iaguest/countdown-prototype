@@ -20,8 +20,8 @@ template <typename T>
 class AbstractGame : public IGame
 {
 public:
-    AbstractGame()
-    : gen(std::random_device{}())
+    AbstractGame(std::mt19937& gen)
+    : gen(gen)
     {
     }
 
@@ -32,7 +32,7 @@ public:
     int answerWaitTime() const override { return 1000; }
     
 protected:
-    std::mt19937 gen; //Standard mersenne_twister_engine
+    std::mt19937& gen; //Standard mersenne_twister_engine
     std::vector<T> gameBoard;
 };
 
@@ -41,11 +41,10 @@ template <typename T>
 std::string AbstractGame<T>::getGameBoard() const
 {
     std::stringstream board;
-    board << "[ ";
     std::for_each(begin(gameBoard), end(gameBoard),
                   [&board](const auto& elem){ board << elem << " "; });
-    board << "]";
-    return board.str();
+    std::string boardStr = board.str();
+    return boardStr.empty() ? boardStr : std::string(begin(boardStr), --end(boardStr));
 }
 
 #endif /* AbstractGame_h */

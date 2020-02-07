@@ -17,7 +17,8 @@
 class LettersGame : public AbstractGame<char>
 {
 public:
-    explicit LettersGame(const std::vector<char>& letters,
+    explicit LettersGame(std::mt19937& gen,
+                         const std::vector<char>& letters,
                          const std::vector<std::string>& words,
                          int numConsonants,
                          int numVowels);

@@ -35,7 +35,7 @@ public:
             if (!startMessage.empty())
                 std::cout << game->startMessage() << std::endl;
             
-            std::cout << game->getGameBoard();
+            std::cout << "[ " << game->getGameBoard() << " ]";
             
             bool isInterruptable = game->allowInterrupts();
             
