@@ -17,6 +17,8 @@
 namespace {
 
 constexpr int numbersBoardSize = 6;
+constexpr int minTarget = 100;
+constexpr int maxTarget = 999;
 
 }  // end namespace
 
@@ -42,7 +44,7 @@ void NumbersGame::initialize()
     std::sample(smallNumbers.begin(), smallNumbers.end(), std::back_inserter(gameBoard),
                 numbersBoardSize - numLargeNumbers, gen);
 
-    target = std::uniform_int_distribution<>(100, 999)(gen);
+    target = std::uniform_int_distribution<>(minTarget, maxTarget)(gen);
 }
 
 std::string NumbersGame::startMessage() const
@@ -59,6 +61,13 @@ int NumbersGame::getScore(const std::string& answer) const
         return abs_diff < 10 ? 10 - abs_diff : 0;
     }
     return 0;
+}
+
+int NumbersGame::getTarget() const
+{
+    if (target >= minTarget && target <= maxTarget)
+        return target;
+    throw std::runtime_error("NumbersGame is uninitialized.");
 }
 
 bool NumbersGame::validNumbersInAnswer(const std::string& answer) const
