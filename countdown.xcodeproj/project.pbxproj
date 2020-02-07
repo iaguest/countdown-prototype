@@ -16,6 +16,8 @@
 		6AAE59C223EDCABD002860B6 /* NumbersGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220C23DB1A69003CA7FC /* NumbersGame.cpp */; };
 		6AAE59C423EDCB9D002860B6 /* NumbersGameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */; };
 		6AAE59C523EDCD95002860B6 /* NumbersGameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */; };
+		6AAE59C723EDCEC6002860B6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE59C623EDCEC6002860B6 /* main.cpp */; };
+		6AAE59C923EDCF36002860B6 /* NumbersGameTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE59C823EDCF36002860B6 /* NumbersGameTests.cpp */; };
 		6ACAE9D023E1A5E80018DCD2 /* NumbersGameUtilsTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6ACAE9CF23E1A5E80018DCD2 /* NumbersGameUtilsTests.cpp */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		6AA8221423DDEE36003CA7FC /* ConundrumGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConundrumGame.h; sourceTree = "<group>"; };
 		6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConundrumGame.cpp; sourceTree = "<group>"; };
 		6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGameUtils.cpp; sourceTree = "<group>"; };
+		6AAE59C623EDCEC6002860B6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		6AAE59C823EDCF36002860B6 /* NumbersGameTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGameTests.cpp; sourceTree = "<group>"; };
 		6ACAE9C623E1A2E80018DCD2 /* countdown_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = countdown_tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACAE9CF23E1A5E80018DCD2 /* NumbersGameUtilsTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGameUtilsTests.cpp; sourceTree = "<group>"; };
 		6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NumbersGameUtils.hpp; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				6ACAE9CF23E1A5E80018DCD2 /* NumbersGameUtilsTests.cpp */,
+				6AAE59C623EDCEC6002860B6 /* main.cpp */,
+				6AAE59C823EDCF36002860B6 /* NumbersGameTests.cpp */,
 			);
 			path = countdown_tests;
 			sourceTree = "<group>";
@@ -237,6 +243,8 @@
 			files = (
 				6AAE59C523EDCD95002860B6 /* NumbersGameUtils.cpp in Sources */,
 				6AAE59C223EDCABD002860B6 /* NumbersGame.cpp in Sources */,
+				6AAE59C923EDCF36002860B6 /* NumbersGameTests.cpp in Sources */,
+				6AAE59C723EDCEC6002860B6 /* main.cpp in Sources */,
 				6ACAE9D023E1A5E80018DCD2 /* NumbersGameUtilsTests.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
