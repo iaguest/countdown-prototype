@@ -6,8 +6,6 @@
 //  Copyright © 2020 Ian Guest. All rights reserved.
 //
 
-#define CATCH_CONFIG_MAIN
-
 #include "../../catch/catch.hpp"
 
 #include <iterator>
