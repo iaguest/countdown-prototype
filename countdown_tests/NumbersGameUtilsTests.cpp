@@ -12,7 +12,6 @@
 #include <string>
 #include <vector>
 
-#include "../countdown/NumbersGame.h"
 #include "../countdown/NumbersGameUtils.hpp"
 
 using namespace NumbersGameUtils;
@@ -145,9 +144,4 @@ TEST_CASE("tryEvaluateExpression fails for malformed expression.")
     SECTION("Invalid characters.") {
         REQUIRE(!tryEvaluateExpression("bob", result));
     }
-}
-
-TEST_CASE("ffo")
-{
-    NumbersGame(1,1);
 }
