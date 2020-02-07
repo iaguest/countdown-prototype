@@ -17,10 +17,10 @@
 class LettersGame : public AbstractGame<char>
 {
 public:
-    LettersGame(const std::vector<char>& letters,
-                const std::vector<std::string>& words,
-                int numConsonants,
-                int numVowels);
+    explicit LettersGame(const std::vector<char>& letters,
+                         const std::vector<std::string>& words,
+                         int numConsonants,
+                         int numVowels);
     
     void initialize() override;
     

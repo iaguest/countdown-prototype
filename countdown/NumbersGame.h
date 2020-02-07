@@ -17,7 +17,7 @@
 class NumbersGame : public AbstractGame<int>
 {
 public:
-    NumbersGame(int numLarge, int numSmall);
+    explicit NumbersGame(int numLarge, int numSmall);
 
     void initialize() override;
     
