@@ -25,8 +25,7 @@ constexpr int maxTarget = 999;
 
 NumbersGame::NumbersGame(std::mt19937& gen, int numLarge)
   : AbstractGame(gen),
-    numLarge(numLarge),
-    numSmall(numbersBoardSize - numLarge)
+    numLarge(numLarge)
 {
 }
 
@@ -37,12 +36,10 @@ void NumbersGame::initialize()
 
     std::shuffle(begin(smallNumbers), end(smallNumbers), gen);
 
-    std::size_t numLargeNumbers = std::uniform_int_distribution<>(0, largeNumbers.size())(gen);
-
     std::sample(rbegin(largeNumbers), rend(largeNumbers), std::back_inserter(gameBoard),
-                numLargeNumbers, gen);
+                numLarge, gen);
     std::sample(smallNumbers.begin(), smallNumbers.end(), std::back_inserter(gameBoard),
-                numbersBoardSize - numLargeNumbers, gen);
+                numbersBoardSize - numLarge, gen);
 
     target = std::uniform_int_distribution<>(minTarget, maxTarget)(gen);
 }

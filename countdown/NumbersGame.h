@@ -32,7 +32,6 @@ private:
     
 private:
     const int numLarge;
-    const int numSmall;
     int target;
 };
 
