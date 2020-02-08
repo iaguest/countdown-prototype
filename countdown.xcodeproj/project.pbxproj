@@ -98,7 +98,6 @@
 		6AA821CF23D0ECF2003CA7FC = {
 			isa = PBXGroup;
 			children = (
-				6AAE59CA23EF0FC0002860B6 /* WordType.h */,
 				6AA821DA23D0ECF2003CA7FC /* countdown */,
 				6ACAE9C723E1A2E80018DCD2 /* countdown_tests */,
 				6AA821D923D0ECF2003CA7FC /* Products */,
@@ -118,6 +117,7 @@
 		6AA821DA23D0ECF2003CA7FC /* countdown */ = {
 			isa = PBXGroup;
 			children = (
+				6AAE59CA23EF0FC0002860B6 /* WordType.h */,
 				6AA821E323D0ED9C003CA7FC /* letter_distribution.txt */,
 				6AA821E223D0ED9C003CA7FC /* UK_english_truncated.txt */,
 				6AA821DB23D0ECF2003CA7FC /* main.cpp */,
