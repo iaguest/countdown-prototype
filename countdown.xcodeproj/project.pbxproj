@@ -46,7 +46,6 @@
 		6AA821D823D0ECF2003CA7FC /* countdown */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = countdown; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AA821DB23D0ECF2003CA7FC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6AA821E223D0ED9C003CA7FC /* UK_english_truncated.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UK_english_truncated.txt; sourceTree = "<group>"; };
-		6AA821E323D0ED9C003CA7FC /* letter_distribution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = letter_distribution.txt; sourceTree = "<group>"; };
 		6AA821E423D0EE2C003CA7FC /* Io.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Io.h; sourceTree = "<group>"; };
 		6AA821FD23D8C602003CA7FC /* AbstractGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractGame.h; sourceTree = "<group>"; };
 		6AA821FE23D8C67A003CA7FC /* GameRunner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRunner.h; sourceTree = "<group>"; };
@@ -65,6 +64,8 @@
 		6AAE59C623EDCEC6002860B6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6AAE59C823EDCF36002860B6 /* NumbersGameTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGameTests.cpp; sourceTree = "<group>"; };
 		6AAE59CA23EF0FC0002860B6 /* WordType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WordType.h; sourceTree = "<group>"; };
+		6AAE59CB23EF180E002860B6 /* vowels.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = vowels.txt; sourceTree = "<group>"; };
+		6AAE59CC23EF182E002860B6 /* consonants.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = consonants.txt; sourceTree = "<group>"; };
 		6ACAE9C623E1A2E80018DCD2 /* countdown_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = countdown_tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACAE9CF23E1A5E80018DCD2 /* NumbersGameUtilsTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGameUtilsTests.cpp; sourceTree = "<group>"; };
 		6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NumbersGameUtils.hpp; sourceTree = "<group>"; };
@@ -118,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				6AAE59CA23EF0FC0002860B6 /* WordType.h */,
-				6AA821E323D0ED9C003CA7FC /* letter_distribution.txt */,
 				6AA821E223D0ED9C003CA7FC /* UK_english_truncated.txt */,
 				6AA821DB23D0ECF2003CA7FC /* main.cpp */,
 				6AA821E423D0EE2C003CA7FC /* Io.h */,
@@ -137,6 +137,8 @@
 				6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */,
 				6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.hpp */,
 				6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */,
+				6AAE59CB23EF180E002860B6 /* vowels.txt */,
+				6AAE59CC23EF182E002860B6 /* consonants.txt */,
 			);
 			path = countdown;
 			sourceTree = "<group>";
