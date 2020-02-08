@@ -20,11 +20,13 @@ namespace
 
 
 LettersGame::LettersGame(std::mt19937& gen,
-                         const std::vector<char>& letters,
+                         const std::vector<char>& vowels,
+                         const std::vector<char>& consonants,
                          const std::vector<std::string>& words,
                          const std::vector<WordType>& choices)
   : AbstractGame(gen),
-    letters(letters),
+    vowels(vowels),
+    consonants(consonants),
     words(words),
     numConsonants(std::count(begin(choices), end(choices), WordType::CONSONANT)),
     numVowels(std::count(begin(choices), end(choices), WordType::VOWEL))
@@ -33,6 +35,9 @@ LettersGame::LettersGame(std::mt19937& gen,
 
 void LettersGame::initialize()
 {
+    std::vector<char> letters(begin(vowels), end(vowels));
+    std::copy(begin(consonants), end(consonants), std::back_inserter(letters));
+    
     std::shuffle(begin(letters), end(letters), gen);
     
     std::sample(begin(letters), end(letters), std::back_inserter(gameBoard),

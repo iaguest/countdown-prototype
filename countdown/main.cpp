@@ -34,12 +34,15 @@ int main(int argc, const char * argv[])
     
     const std::string path = "/Users/ianguest/C++/countdown/countdown";
     
-    std::vector<char> letters = Io::getLetters(path, "letter_distribution.txt");
+    std::vector<char> vowels = Io::getLetters(path, "vowels.txt");
+    std::vector<char> consonants = Io::getLetters(path, "consonants.txt");
     std::vector<std::string> words = Io::getWords(path, Constants::dictionaryWordsFileName);
         
     std::vector<IGame*> games;
     ConundrumGame g1(gen, words);
-    LettersGame g2(gen, letters, words, std::vector<WordType>());
+    // TODO: Passing word type will not work because initialization needs to be
+    //       interactive. Simplest option to pass iostream ref to initialize?
+    LettersGame g2(gen, vowels, consonants, words, std::vector<WordType>());
     NumbersGame g3(gen, 0);
 //    games.push_back(&g1);
 //    games.push_back(&g2);
