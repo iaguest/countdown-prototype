@@ -64,6 +64,7 @@
 		6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGameUtils.cpp; sourceTree = "<group>"; };
 		6AAE59C623EDCEC6002860B6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6AAE59C823EDCF36002860B6 /* NumbersGameTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGameTests.cpp; sourceTree = "<group>"; };
+		6AAE59CA23EF0FC0002860B6 /* WordType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WordType.h; sourceTree = "<group>"; };
 		6ACAE9C623E1A2E80018DCD2 /* countdown_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = countdown_tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACAE9CF23E1A5E80018DCD2 /* NumbersGameUtilsTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGameUtilsTests.cpp; sourceTree = "<group>"; };
 		6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NumbersGameUtils.hpp; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 		6AA821CF23D0ECF2003CA7FC = {
 			isa = PBXGroup;
 			children = (
+				6AAE59CA23EF0FC0002860B6 /* WordType.h */,
 				6AA821DA23D0ECF2003CA7FC /* countdown */,
 				6ACAE9C723E1A2E80018DCD2 /* countdown_tests */,
 				6AA821D923D0ECF2003CA7FC /* Products */,
