@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "AbstractGame.h"
+#include "WordType.h"
 
 class LettersGame : public AbstractGame<char>
 {
@@ -20,8 +21,7 @@ public:
     explicit LettersGame(std::mt19937& gen,
                          const std::vector<char>& letters,
                          const std::vector<std::string>& words,
-                         int numConsonants,
-                         int numVowels);
+                         const std::vector<WordType>& choices);
     
     void initialize() override;
     
@@ -33,8 +33,8 @@ private:
 private:
     std::vector<char> letters;
     const std::vector<std::string>& words;
-    const int numConsonants;
-    const int numVowels;
+    const std::size_t numConsonants;
+    const std::size_t numVowels;
 };
 
 #endif /* LettersGame_h */

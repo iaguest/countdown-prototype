@@ -25,6 +25,7 @@
 #include "LettersGame.h"
 #include "NumbersGame.h"
 #include "Timer.h"
+#include "WordType.h"
 
 
 int main(int argc, const char * argv[])
@@ -38,7 +39,7 @@ int main(int argc, const char * argv[])
         
     std::vector<IGame*> games;
     ConundrumGame g1(gen, words);
-    LettersGame g2(gen, letters, words, 0, 0);
+    LettersGame g2(gen, letters, words, std::vector<WordType>());
     NumbersGame g3(gen, 0);
 //    games.push_back(&g1);
 //    games.push_back(&g2);

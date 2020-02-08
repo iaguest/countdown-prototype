@@ -22,13 +22,12 @@ namespace
 LettersGame::LettersGame(std::mt19937& gen,
                          const std::vector<char>& letters,
                          const std::vector<std::string>& words,
-                         int numConsonants,
-                         int numVowels)
+                         const std::vector<WordType>& choices)
   : AbstractGame(gen),
     letters(letters),
     words(words),
-    numConsonants(numConsonants),
-    numVowels(numVowels)
+    numConsonants(std::count(begin(choices), end(choices), WordType::CONSONANT)),
+    numVowels(std::count(begin(choices), end(choices), WordType::VOWEL))
 {
 }
 
