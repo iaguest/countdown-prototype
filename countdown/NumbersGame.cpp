@@ -23,10 +23,10 @@ constexpr int maxTarget = 999;
 }  // end namespace
 
 
-NumbersGame::NumbersGame(std::mt19937& gen, int numLarge, int numSmall)
+NumbersGame::NumbersGame(std::mt19937& gen, int numLarge)
   : AbstractGame(gen),
     numLarge(numLarge),
-    numSmall(numSmall)
+    numSmall(numbersBoardSize - numLarge)
 {
 }
 

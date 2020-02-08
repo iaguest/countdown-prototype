@@ -39,7 +39,7 @@ int main(int argc, const char * argv[])
     std::vector<IGame*> games;
     ConundrumGame g1(gen, words);
     LettersGame g2(gen, letters, words, 0, 0);
-    NumbersGame g3(gen, 0, 0);
+    NumbersGame g3(gen, 0);
 //    games.push_back(&g1);
 //    games.push_back(&g2);
     games.push_back(&g3);
