@@ -13,6 +13,8 @@
 
 #include "../countdown/NumbersGame.h"
 
+constexpr double EPSILON = 1.0E-9;
+
 TEST_CASE("Validate NumbersGame behavior.")
 {
     // initialization
@@ -34,9 +36,9 @@ TEST_CASE("Validate NumbersGame behavior.")
     SECTION("Game board filled on initialize.")
     {
         auto game = NumbersGame(gen);
-        iss.str("2");
+        iss.str("1");
         game.initialize(oss, iss); 
-        REQUIRE_THAT("100 50 7 1 3 9", Catch::Equals(game.getGameBoard()));
+        REQUIRE_THAT("100 6 8 4 3 1", Catch::Equals(game.getGameBoard()));
     }
     
     SECTION("getTarget throws if uninitialized game")
@@ -50,5 +52,57 @@ TEST_CASE("Validate NumbersGame behavior.")
         auto game = NumbersGame(gen);
         game.initialize(oss, iss);
         REQUIRE(137 == game.getTarget());
+    }
+    
+    SECTION("getScore returns score of 10 for valid answer")
+    {
+        auto game = NumbersGame(gen);
+        iss.str("2");
+        game.initialize(oss, iss); 
+        CHECK_THAT("100 50 2 10 6 8", Catch::Equals(game.getGameBoard()));
+        CHECK(137 == game.getTarget());
+        REQUIRE_THAT(game.getScore("(100+50)-10-(6/2)"), Catch::WithinRel(10.0, EPSILON));
+    }
+    
+    SECTION("getScore returns score of 3 when 7 away from target.")
+    {
+        auto game = NumbersGame(gen);
+        iss.str("3");
+        game.initialize(oss, iss); 
+        CHECK_THAT("100 75 50 6 8 5", Catch::Equals(game.getGameBoard()));
+        CHECK(137 == game.getTarget());
+        REQUIRE_THAT(game.getScore("(75+50)+5"), Catch::WithinRel(3.0, EPSILON));
+    }
+    
+    SECTION("getScore returns score of 0 when 10 or more away from target.")
+    {
+        auto game = NumbersGame(gen);
+        iss.str("4");
+        game.initialize(oss, iss); 
+        CHECK_THAT("100 75 50 25 5 5", Catch::Equals(game.getGameBoard()));
+        CHECK(137 == game.getTarget());
+        CHECK_THAT(game.getScore("(100+50)-(75/25)"), Catch::WithinRel(0.0, EPSILON));
+        REQUIRE_THAT(game.getScore("100+50"), Catch::WithinRel(0.0, EPSILON));
+    }
+    
+    SECTION("getScore returns 0 for invalid answers.")
+    {
+        auto game = NumbersGame(gen);
+        game.initialize(oss, iss);
+        CHECK(137 == game.getTarget());
+        // empty expression
+        CHECK_THAT(game.getScore(""), Catch::WithinRel(0.0, EPSILON));
+        // number not in gameboard
+        CHECK_THAT(game.getScore("137"), Catch::WithinRel(0.0, EPSILON));
+        // invalid expression
+        CHECK_THAT(game.getScore("+/-9"), Catch::WithinRel(0.0, EPSILON));
+    }
+    
+    SECTION("startMessage returns expected value.")
+    {
+        auto game = NumbersGame(gen);
+        game.initialize(oss, iss);
+        CHECK(137 == game.getTarget());
+        REQUIRE_THAT("Target is: 137", Catch::Equals(game.startMessage()));
     }
 }

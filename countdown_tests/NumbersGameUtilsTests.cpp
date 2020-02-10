@@ -16,6 +16,8 @@
 
 using namespace NumbersGameUtils;
 
+constexpr double EPSILON = 1.0E-9;
+
 TEST_CASE("tokenizeExpression splits simple expression into tokens.")
 {    
     REQUIRE_THAT(std::vector<std::string>(
@@ -68,12 +70,12 @@ TEST_CASE("tryEvaluateExpression returns correct result for trivial expression."
     
     SECTION("Single value.") {
         CHECK(tryEvaluateExpression("42", result));
-        REQUIRE_THAT(result, Catch::WithinRel(42.0, 1.0E-9));
+        REQUIRE_THAT(result, Catch::WithinRel(42.0, EPSILON));
     }
     
     SECTION("Single value with balanced parentheses.") {
         CHECK(tryEvaluateExpression("(999)", result));
-        REQUIRE_THAT(result, Catch::WithinRel(999.0, 1.0E-9));
+        REQUIRE_THAT(result, Catch::WithinRel(999.0, EPSILON));
     }
 }
 
@@ -83,7 +85,7 @@ TEST_CASE("tryEvaluateExpression returns correct result for simple expression.")
     bool isSuccess = tryEvaluateExpression("1+2", result);
     
     CHECK(isSuccess);
-    REQUIRE_THAT(result, Catch::WithinRel(3.0, 1.0E-9));
+    REQUIRE_THAT(result, Catch::WithinRel(3.0, EPSILON));
 }
           
 TEST_CASE("tryEvaluateExpression returns correct result for complex expression.")
@@ -92,7 +94,7 @@ TEST_CASE("tryEvaluateExpression returns correct result for complex expression."
     bool isSuccess = tryEvaluateExpression("((15 / (7 - (1 + 1))) * 3) - (2 + (1 + 1)) ", result);
     
     CHECK(isSuccess);
-    REQUIRE_THAT(result, Catch::WithinRel(5.0, 1.0E-9));
+    REQUIRE_THAT(result, Catch::WithinRel(5.0, EPSILON));
 }
 
 TEST_CASE("tryEvaluateExpression returns false for empty expression.")
