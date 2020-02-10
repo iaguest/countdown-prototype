@@ -18,7 +18,7 @@ TEST_CASE("Validate NumbersGame behavior.")
     // initialization
     std::mt19937 gen(1);
     std::ostringstream oss;
-    std::istringstream iss("2");
+    std::istringstream iss;
     
     SECTION("NumbersGame construction succeeds.")
     {
@@ -34,8 +34,9 @@ TEST_CASE("Validate NumbersGame behavior.")
     SECTION("Game board filled on initialize.")
     {
         auto game = NumbersGame(gen);
+        iss.str("2");
         game.initialize(oss, iss); 
-        REQUIRE_THAT("75 25 10 9 4 8", Catch::Equals(game.getGameBoard()));
+        REQUIRE_THAT("100 50 7 1 3 9", Catch::Equals(game.getGameBoard()));
     }
     
     SECTION("getTarget throws if uninitialized game")
@@ -48,6 +49,6 @@ TEST_CASE("Validate NumbersGame behavior.")
     {
         auto game = NumbersGame(gen);
         game.initialize(oss, iss);
-        REQUIRE(416 == game.getTarget());
+        REQUIRE(137 == game.getTarget());
     }
 }
