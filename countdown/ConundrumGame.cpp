@@ -22,7 +22,7 @@ ConundrumGame::ConundrumGame(std::mt19937& gen,
 {
 }
 
-void ConundrumGame::initialize()
+void ConundrumGame::initialize(std::ostream& os, std::istream& ios)
 {
     std::vector<std::string> nineLetterWords;
     std::copy_if(begin(words), end(words), std::back_inserter(nineLetterWords),

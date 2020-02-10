@@ -9,6 +9,7 @@
 #ifndef IGame_h
 #define IGame_h
 
+#include <iostream>
 #include <string>
 
 class IGame
@@ -20,7 +21,7 @@ public:
     IGame(IGame&) = delete;
     IGame& operator=(const IGame&) = delete;
     
-    virtual void initialize() = 0;
+    virtual void initialize(std::ostream& os, std::istream& is) = 0;
     virtual std::string getGameBoard() const = 0;
     virtual std::string startMessage() const = 0;
     virtual std::string endMessage() const = 0;

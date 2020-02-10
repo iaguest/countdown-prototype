@@ -19,21 +19,32 @@ namespace {
 constexpr int numbersBoardSize = 6;
 constexpr int minTarget = 100;
 constexpr int maxTarget = 999;
+std::array largeNumbers{ 25, 50, 75, 100 };
+std::array smallNumbers{ 1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 , 8 , 8 , 9 , 9 , 10 , 10 };
 
 }  // end namespace
 
 
-NumbersGame::NumbersGame(std::mt19937& gen, int numLarge)
+NumbersGame::NumbersGame(std::mt19937& gen)
   : AbstractGame(gen),
-    numLarge(numLarge)
+    numLarge(0)
 {
 }
 
-void NumbersGame::initialize()
+void NumbersGame::initialize(std::ostream& os, std::istream& is)
 {
-    std::array largeNumbers{ 25, 50, 75, 100 };
-    std::array smallNumbers{ 1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 , 8 , 8 , 9 , 9 , 10 , 10 };
-
+    os << "Enter number of large numbers (0->4): ";
+    std::string line;
+    std::getline(is, line);
+    
+    try {
+        numLarge = std::stoi(line);
+    }
+    catch (std::invalid_argument&) {
+    }
+    catch (std::out_of_range&) {
+    }
+    
     std::shuffle(begin(smallNumbers), end(smallNumbers), gen);
 
     std::sample(rbegin(largeNumbers), rend(largeNumbers), std::back_inserter(gameBoard),

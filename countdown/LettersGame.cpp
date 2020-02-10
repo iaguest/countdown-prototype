@@ -33,7 +33,7 @@ LettersGame::LettersGame(std::mt19937& gen,
 {
 }
 
-void LettersGame::initialize()
+void LettersGame::initialize(std::ostream& os, std::istream& is)
 {
     std::vector<char> letters(begin(vowels), end(vowels));
     std::copy(begin(consonants), end(consonants), std::back_inserter(letters));

@@ -29,7 +29,7 @@ public:
     {
         int score = 0;
         for (auto& game: games) {
-            game->initialize();
+            game->initialize(std::cout, std::cin);
             
             std::string startMessage = game->startMessage();
             if (!startMessage.empty())

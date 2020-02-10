@@ -10,16 +10,15 @@
 #define NumbersGame_hpp
 
 #include <array>
-#include <ostream>
 
 #include "AbstractGame.h"
 
 class NumbersGame : public AbstractGame<int>
 {
 public:
-    explicit NumbersGame(std::mt19937& gen, int numLarge);
+    explicit NumbersGame(std::mt19937& gen);
 
-    void initialize() override;
+    void initialize(std::ostream& os, std::istream& is) override;
     
     std::string startMessage() const override;
     
@@ -31,7 +30,7 @@ private:
     bool validNumbersInAnswer(const std::string& answer) const;
     
 private:
-    const int numLarge;
+    int numLarge;
     int target;
 };
 

@@ -43,7 +43,7 @@ int main(int argc, const char * argv[])
     // TODO: Passing word type will not work because initialization needs to be
     //       interactive. Simplest option to pass iostream ref to initialize?
     LettersGame g2(gen, vowels, consonants, words, std::vector<WordType>());
-    NumbersGame g3(gen, 0);
+    NumbersGame g3(gen);
 //    games.push_back(&g1);
 //    games.push_back(&g2);
     games.push_back(&g3);

@@ -24,7 +24,7 @@ public:
                          const std::vector<std::string>& words,
                          const std::vector<WordType>& choices);
     
-    void initialize() override;
+    void initialize(std::ostream& os, std::istream& is) override;
     
     int getScore(const std::string& answer) const override;
 
