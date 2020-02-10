@@ -33,6 +33,8 @@ NumbersGame::NumbersGame(std::mt19937& gen)
 
 void NumbersGame::initialize(std::ostream& os, std::istream& is)
 {
+    target = std::uniform_int_distribution<>(minTarget, maxTarget)(gen); 
+    
     os << "Enter number of large numbers (0->4): ";
     std::string line;
     std::getline(is, line);
@@ -51,8 +53,6 @@ void NumbersGame::initialize(std::ostream& os, std::istream& is)
                 numLarge, gen);
     std::sample(smallNumbers.begin(), smallNumbers.end(), std::back_inserter(gameBoard),
                 numbersBoardSize - numLarge, gen);
-
-    target = std::uniform_int_distribution<>(minTarget, maxTarget)(gen);
 }
 
 std::string NumbersGame::startMessage() const
