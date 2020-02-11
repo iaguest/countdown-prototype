@@ -21,9 +21,9 @@ TEST_CASE("Validate LettersGame behavior.")
     std::ostringstream oss;
     std::istringstream iss;
     
-    std::vector<char> vowels{'a','e','i','o','u'};
-    std::vector<char> consonants{'p','s','t','c','h'};
-    std::vector<std::string> words{"cup", "peach", "push"};
+    const std::vector<char> vowels{'a','e','i','o','u'};
+    const std::vector<char> consonants{'p','s','t','c','h'};
+    const std::vector<std::string> words{"cup", "peach", "push"};
 
     auto isVowel = [&vowels](char& c)
         { return std::find(begin(vowels), end(vowels), c) != end(vowels); };

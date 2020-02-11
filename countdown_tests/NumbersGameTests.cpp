@@ -99,12 +99,13 @@ TEST_CASE("Validate NumbersGame behavior.")
         CHECK_THAT(game.getScore("+/-9"), Catch::WithinRel(0.0, EPSILON));
     }
     
-    SECTION("startMessage returns expected value.")
+    SECTION("startMessage includes target value.")
     {
         auto game = NumbersGame(gen);
         game.initialize(oss, iss);
         CHECK(137 == game.getTarget());
-        REQUIRE_THAT("Target is: 137", Catch::Equals(game.startMessage()));
+
+        REQUIRE(game.startMessage().find("137") != std::string::npos);
     }
     
     SECTION("picking 3 large numbers yields a gameboard with 3 numbers greater than 10")
