@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6AA821DC23D0ECF2003CA7FC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA821DB23D0ECF2003CA7FC /* main.cpp */; };
 		6AA8220123DAF57B003CA7FC /* LettersGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220023DAF57B003CA7FC /* LettersGame.cpp */; };
-		6AA8220423DB1101003CA7FC /* Constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220323DB1101003CA7FC /* Constants.cpp */; };
 		6AA8220823DB1833003CA7FC /* Io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220723DB1833003CA7FC /* Io.cpp */; };
 		6AA8220E23DB1A69003CA7FC /* NumbersGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220C23DB1A69003CA7FC /* NumbersGame.cpp */; };
 		6AA8221623DDEF27003CA7FC /* ConundrumGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */; };
@@ -52,8 +51,6 @@
 		6AA821FE23D8C67A003CA7FC /* GameRunner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRunner.h; sourceTree = "<group>"; };
 		6AA821FF23D8C918003CA7FC /* LettersGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LettersGame.h; sourceTree = "<group>"; };
 		6AA8220023DAF57B003CA7FC /* LettersGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LettersGame.cpp; sourceTree = "<group>"; };
-		6AA8220223DB0209003CA7FC /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		6AA8220323DB1101003CA7FC /* Constants.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Constants.cpp; sourceTree = "<group>"; };
 		6AA8220723DB1833003CA7FC /* Io.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Io.cpp; sourceTree = "<group>"; };
 		6AA8220B23DB189C003CA7FC /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		6AA8220C23DB1A69003CA7FC /* NumbersGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGame.cpp; sourceTree = "<group>"; };
@@ -126,8 +123,6 @@
 				6AA821FE23D8C67A003CA7FC /* GameRunner.h */,
 				6AA821FF23D8C918003CA7FC /* LettersGame.h */,
 				6AA8220023DAF57B003CA7FC /* LettersGame.cpp */,
-				6AA8220223DB0209003CA7FC /* Constants.h */,
-				6AA8220323DB1101003CA7FC /* Constants.cpp */,
 				6AA8220723DB1833003CA7FC /* Io.cpp */,
 				6AA8220B23DB189C003CA7FC /* Timer.h */,
 				6AA8220C23DB1A69003CA7FC /* NumbersGame.cpp */,
@@ -234,7 +229,6 @@
 			files = (
 				6AA821DC23D0ECF2003CA7FC /* main.cpp in Sources */,
 				6AAE59C423EDCB9D002860B6 /* NumbersGameUtils.cpp in Sources */,
-				6AA8220423DB1101003CA7FC /* Constants.cpp in Sources */,
 				6AA8220123DAF57B003CA7FC /* LettersGame.cpp in Sources */,
 				6AA8221623DDEF27003CA7FC /* ConundrumGame.cpp in Sources */,
 				6AA8220823DB1833003CA7FC /* Io.cpp in Sources */,
