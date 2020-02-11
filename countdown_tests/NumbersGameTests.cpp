@@ -15,6 +15,16 @@
 
 constexpr double EPSILON = 1.0E-9;
 
+std::vector<std::string> stringToVec(const std::string& str)
+{
+    std::vector<std::string> tokens;
+    std::istringstream ss(str);
+    std::string token;
+    while (ss >> token)
+        tokens.push_back(token);
+    return tokens;
+}
+
 TEST_CASE("Validate NumbersGame behavior.")
 {
     // initialization
@@ -104,5 +114,24 @@ TEST_CASE("Validate NumbersGame behavior.")
         game.initialize(oss, iss);
         CHECK(137 == game.getTarget());
         REQUIRE_THAT("Target is: 137", Catch::Equals(game.startMessage()));
+    }
+    
+    SECTION("picking 3 large numbers yields a gameboard with 3 numbers greater than 10")
+    {
+        auto game = NumbersGame(gen);
+        iss.str("3");
+        game.initialize(oss, iss);
+        auto gameBoard = stringToVec(game.getGameBoard());
+        REQUIRE(3 == std::count_if(begin(gameBoard), end(gameBoard),
+                                   [](std::string& elem) { return std::stoi(elem) > 10; }));
+    }
+    
+    SECTION("picking 0 large numbers yields a gameboard with no numbers larger than 10")
+    {
+        auto game = NumbersGame(gen);
+        game.initialize(oss, iss);
+        auto gameBoard = stringToVec(game.getGameBoard());
+        REQUIRE(0 == std::count_if(begin(gameBoard), end(gameBoard),
+                                   [](std::string& elem) { return std::stoi(elem) > 10; }));
     }
 }
