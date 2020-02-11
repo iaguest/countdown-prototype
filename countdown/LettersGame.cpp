@@ -9,13 +9,12 @@
 #include <algorithm>
 #include <random>
 
-#include "Constants.h"
 #include "Io.h"
 #include "LettersGame.h"
 
 namespace
 {
-    const std::string letterDistributionFileName = "letter_distribution.txt";
+    const std::size_t lettersBoardSize = 9;
 }
 
 
@@ -38,7 +37,7 @@ void LettersGame::initialize(std::ostream& os, std::istream& is)
     std::shuffle(begin(letters), end(letters), gen);
     
     std::sample(begin(letters), end(letters), std::back_inserter(gameBoard),
-                Constants::lettersBoardSize, gen);
+                lettersBoardSize, gen);
 }
 
 int LettersGame::getScore(const std::string& answer) const

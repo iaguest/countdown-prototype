@@ -22,6 +22,24 @@ constexpr int maxTarget = 999;
 std::array largeNumbers{ 25, 50, 75, 100 };
 std::array smallNumbers{ 1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 , 8 , 8 , 9 , 9 , 10 , 10 };
 
+int getNumLargeNumbersInput(std::ostream& os, std::istream& is)
+{
+    os << "Enter number of large numbers (0->4): ";
+    
+    std::string line;
+    std::getline(is, line);
+    
+    try {
+        return std::stoi(line);
+    }
+    catch (std::invalid_argument&) {
+    }
+    catch (std::out_of_range&) {
+    }
+    
+    return 0;
+}
+
 }  // end namespace
 
 
@@ -34,18 +52,7 @@ void NumbersGame::initialize(std::ostream& os, std::istream& is)
 {
     target = std::uniform_int_distribution<>(minTarget, maxTarget)(gen); 
     
-    os << "Enter number of large numbers (0->4): ";
-    std::string line;
-    std::getline(is, line);
-    
-    int numLarge = 0;
-    try {
-        numLarge = std::stoi(line);
-    }
-    catch (std::invalid_argument&) {
-    }
-    catch (std::out_of_range&) {
-    }
+    int numLarge = getNumLargeNumbersInput(os, is);
     
     std::shuffle(begin(smallNumbers), end(smallNumbers), gen);
 

@@ -17,7 +17,6 @@
 #include <string>
 #include <vector>
 
-#include "Constants.h"
 #include "ConundrumGame.h"
 #include "GameRunner.h"
 #include "IGame.h"
@@ -25,7 +24,6 @@
 #include "LettersGame.h"
 #include "NumbersGame.h"
 #include "Timer.h"
-#include "WordType.h"
 
 
 int main(int argc, const char * argv[])
@@ -36,7 +34,7 @@ int main(int argc, const char * argv[])
     
     std::vector<char> vowels = Io::getLetters(path, "vowels.txt");
     std::vector<char> consonants = Io::getLetters(path, "consonants.txt");
-    std::vector<std::string> words = Io::getWords(path, Constants::dictionaryWordsFileName);
+    std::vector<std::string> words = Io::getWords(path, "UK_english_truncated.txt");
         
     std::vector<IGame*> games;
     ConundrumGame g1(gen, words);
