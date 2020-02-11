@@ -6,6 +6,7 @@
 //  Copyright © 2020 Ian Guest. All rights reserved.
 //
 
+#include <array>
 #include <iostream>
 #include <random>
 #include <regex>

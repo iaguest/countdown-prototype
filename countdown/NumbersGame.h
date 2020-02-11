@@ -9,8 +9,6 @@
 #ifndef NumbersGame_hpp
 #define NumbersGame_hpp
 
-#include <array>
-
 #include "AbstractGame.h"
 
 class NumbersGame : public AbstractGame<int>
