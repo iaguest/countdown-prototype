@@ -19,8 +19,12 @@ public:
     explicit ConundrumGame(std::mt19937& gen, const std::vector<std::string>& words);
     
     void initialize(std::ostream& os, std::istream& is) override;
+    
     std::string endMessage() const override;
+    
     int getScore(const std::string& answer) const override;
+    
+    int answerWaitTime() const override { return 20; }
     
 private:
     const std::vector<std::string>& words;

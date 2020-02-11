@@ -37,11 +37,11 @@ int main(int argc, const char * argv[])
     std::vector<std::string> words = Io::getWords(path, "UK_english_truncated.txt");
         
     std::vector<IGame*> games;
-    //ConundrumGame g1(gen, words);
-    LettersGame g2(gen, vowels, consonants, words);
-    //NumbersGame g3(gen);
-//    games.push_back(&g1);
-//    games.push_back(&g2);
+    LettersGame g1(gen, vowels, consonants, words);
+    NumbersGame g2(gen);
+    ConundrumGame g3(gen, words);
+    games.push_back(&g1);
+    games.push_back(&g2);
     games.push_back(&g2);
     GameRunner bob(games);
     std::cout << bob.execute();

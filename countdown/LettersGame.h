@@ -25,6 +25,8 @@ public:
     void initialize(std::ostream& os, std::istream& is) override;
     
     int getScore(const std::string& answer) const override;
+    
+    int answerWaitTime() const override { return 10; }
 
 private:
     std::vector<std::string> getSolutionWords(const std::vector<std::string>& words,

@@ -42,7 +42,7 @@ public:
             std::cout << std::endl;
             std::cout << "Start 30 second countdown!" << std::endl;
             Timer t1;
-            while (t1.elapsed() < 1)
+            while (t1.elapsed() < 30)
             {
                 if (isInterruptable) //&& anyKeyPress)
                   break;

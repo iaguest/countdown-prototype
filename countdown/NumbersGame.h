@@ -23,6 +23,8 @@ public:
     int getScore(const std::string& answer) const override;
     
     int getTarget() const;
+    
+    int answerWaitTime() const override { return 10; }
 
 private:
     bool validNumbersInAnswer(const std::string& answer) const;

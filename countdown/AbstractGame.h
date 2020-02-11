@@ -29,7 +29,6 @@ public:
     std::string startMessage() const override { return std::string(); };
     std::string endMessage() const override { return std::string(); };
     bool allowInterrupts() const override { return false; }
-    int answerWaitTime() const override { return 1000; }
     
 protected:
     std::mt19937& gen; //Standard mersenne_twister_engine
