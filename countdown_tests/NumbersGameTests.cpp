@@ -12,18 +12,9 @@
 #include "../../catch/catch.hpp"
 
 #include "../countdown/NumbersGame.h"
+#include "TestUtils.h"
 
 constexpr double EPSILON = 1.0E-9;
-
-std::vector<std::string> stringToVec(const std::string& str)
-{
-    std::vector<std::string> tokens;
-    std::istringstream ss(str);
-    std::string token;
-    while (ss >> token)
-        tokens.push_back(token);
-    return tokens;
-}
 
 TEST_CASE("Validate NumbersGame behavior.")
 {
@@ -121,7 +112,7 @@ TEST_CASE("Validate NumbersGame behavior.")
         auto game = NumbersGame(gen);
         iss.str("3");
         game.initialize(oss, iss);
-        auto gameBoard = stringToVec(game.getGameBoard());
+        auto gameBoard = TestUtils::stringToVec<std::string>(game.getGameBoard());
         REQUIRE(3 == std::count_if(begin(gameBoard), end(gameBoard),
                                    [](std::string& elem) { return std::stoi(elem) > 10; }));
     }
@@ -130,7 +121,7 @@ TEST_CASE("Validate NumbersGame behavior.")
     {
         auto game = NumbersGame(gen);
         game.initialize(oss, iss);
-        auto gameBoard = stringToVec(game.getGameBoard());
+        auto gameBoard = TestUtils::stringToVec<std::string>(game.getGameBoard());
         REQUIRE(0 == std::count_if(begin(gameBoard), end(gameBoard),
                                    [](std::string& elem) { return std::stoi(elem) > 10; }));
     }
