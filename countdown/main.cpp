@@ -34,7 +34,6 @@ int main(int argc, const char * argv[])
     
     std::vector<char> vowels = Io::getLetters(path, "vowels.txt");
     std::vector<char> consonants = Io::getLetters(path, "consonants.txt");
-    // TODO: Should be heap allocated?
     std::vector<std::string> words = Io::getWords(path, "UK_english_truncated.txt");
         
     std::vector<IGame*> games;
