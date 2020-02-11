@@ -26,8 +26,7 @@ std::array smallNumbers{ 1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 ,
 
 
 NumbersGame::NumbersGame(std::mt19937& gen)
-  : AbstractGame(gen),
-    numLarge(0)
+  : AbstractGame(gen)
 {
 }
 
@@ -39,6 +38,7 @@ void NumbersGame::initialize(std::ostream& os, std::istream& is)
     std::string line;
     std::getline(is, line);
     
+    int numLarge = 0;
     try {
         numLarge = std::stoi(line);
     }

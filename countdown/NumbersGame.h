@@ -30,7 +30,6 @@ private:
     bool validNumbersInAnswer(const std::string& answer) const;
     
 private:
-    int numLarge;
     int target;
 };
 
