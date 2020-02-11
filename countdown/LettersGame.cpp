@@ -7,6 +7,7 @@
 //
 
 #include <algorithm>
+#include <cctype>
 #include <random>
 
 #include "Io.h"
@@ -14,8 +15,18 @@
 
 namespace
 {
-    const std::size_t lettersBoardSize = 9;
+const std::size_t lettersBoardSize = 9;
+
+char getSingleCharacterInput(std::istream& is)
+{
+    char c;
+    is >> c;
+    is.clear();
+    is.ignore();
+    return std::tolower(c);    
 }
+
+}   // end namespace
 
 
 LettersGame::LettersGame(std::mt19937& gen,
@@ -31,13 +42,22 @@ LettersGame::LettersGame(std::mt19937& gen,
 
 void LettersGame::initialize(std::ostream& os, std::istream& is)
 {
-    std::vector<char> letters(begin(vowels), end(vowels));
-    std::copy(begin(consonants), end(consonants), std::back_inserter(letters));
-    
-    std::shuffle(begin(letters), end(letters), gen);
-    
-    std::sample(begin(letters), end(letters), std::back_inserter(gameBoard),
-                lettersBoardSize, gen);
+    while (gameBoard.size() != lettersBoardSize)
+    {
+        os << "Vowel(v)/Consonant(c)? ";
+        const char c = getSingleCharacterInput(is);
+        if (c == 'v' || c == 'V') {
+            int randomVowelIndex =
+                std::uniform_int_distribution<>(0, static_cast<int>(vowels.size() - 1))(gen);
+            gameBoard.push_back(vowels.at(randomVowelIndex));
+        }
+        else if (c=='c' || c== 'C') {
+            int randomConsonantIndex =
+                std::uniform_int_distribution<>(0, static_cast<int>(consonants.size() - 1))(gen);
+            gameBoard.push_back(consonants.at(randomConsonantIndex));
+        }
+        os << getGameBoard() << std::endl;
+    }
 }
 
 int LettersGame::getScore(const std::string& answer) const
