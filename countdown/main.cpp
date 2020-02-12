@@ -40,8 +40,8 @@ int main(int argc, const char * argv[])
     LettersGame g1(gen, vowels, consonants, words);
     NumbersGame g2(gen);
     ConundrumGame g3(gen, words);
-    games.push_back(&g1);
-    games.push_back(&g2);
+//    games.push_back(&g1);
+//    games.push_back(&g2);
     games.push_back(&g3);
     GameRunner bob(games);
     std::cout << bob.execute();

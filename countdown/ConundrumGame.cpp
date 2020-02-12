@@ -45,5 +45,5 @@ std::string ConundrumGame::endMessage() const
 
 int ConundrumGame::getScore(const std::string& answer) const
 {
-    return std::equal(begin(answer), end(answer), begin(nineLetterWord)) ? 10 : 0;
+    return std::equal(begin(nineLetterWord), end(nineLetterWord), begin(answer)) ? 10 : 0;
 }
