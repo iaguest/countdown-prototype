@@ -48,7 +48,8 @@ TEST_CASE("Validate ConundrumGame behavior.")
     SECTION("Incorrect answer score 0 points.")
     {   auto game = ConundrumGame(gen, words);
         game.initialize(oss,iss);
-        REQUIRE(0 == game.getScore("badger"));
+        CHECK(0 == game.getScore("badger"));
+        REQUIRE(0 == game.getScore(""));
     }
     
     SECTION("endMessage includes correct word.")
