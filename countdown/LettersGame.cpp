@@ -94,6 +94,7 @@ std::string LettersGame::endMessage() const
 {
     std::stringstream ss;
     ss << "Possible words are:" << std::endl;
+    // TODO: avoid getting solution words twice!
     std::vector<std::string> solutionWords = getSolutionWords(words, gameBoard);
     for (const auto& word: solutionWords)
         ss << word << " ";
