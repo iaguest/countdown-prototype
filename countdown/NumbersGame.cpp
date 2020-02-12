@@ -27,8 +27,6 @@ int getSingleIntegerInputOrDefault(std::istream& is, int intDefault = 0)
 {
     std::string line;
     std::getline(is, line);
-    is.clear();
-    is.ignore();
     
     try {
         return std::stoi(line);

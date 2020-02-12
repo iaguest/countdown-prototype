@@ -24,7 +24,7 @@ public:
     
     int getTarget() const;
     
-    int answerWaitTime() const override { return 10; }
+    int answerWaitTime() const override { return 30; }
 
 private:
     bool validNumbersInAnswer(const std::string& answer) const;

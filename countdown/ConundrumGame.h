@@ -24,7 +24,7 @@ public:
     
     int getScore(const std::string& answer) const override;
     
-    int answerWaitTime() const override { return 20; }
+    int answerWaitTime() const override { return 10; }
     
 private:
     const std::vector<std::string>& words;
