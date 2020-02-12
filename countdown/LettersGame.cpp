@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <cctype>
 #include <random>
+#include <sstream>
 
 #include "Io.h"
 #include "LettersGame.h"
@@ -87,4 +88,15 @@ std::vector<std::string> LettersGame::getSolutionWords(const std::vector<std::st
             solutionWords.push_back(word);
     }
     return solutionWords;
+}
+
+std::string LettersGame::endMessage() const
+{
+    std::stringstream ss;
+    ss << "Possible words are:" << std::endl;
+    std::vector<std::string> solutionWords = getSolutionWords(words, gameBoard);
+    for (const auto& word: solutionWords)
+        ss << word << " ";
+    ss << std::endl;
+    return ss.str();
 }

@@ -27,6 +27,8 @@ public:
     int getScore(const std::string& answer) const override;
     
     int answerWaitTime() const override { return 10; }
+    
+    std::string endMessage() const override;
 
 private:
     std::vector<std::string> getSolutionWords(const std::vector<std::string>& words,
