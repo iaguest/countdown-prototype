@@ -87,7 +87,16 @@ TEST_CASE("tryEvaluateExpression returns correct result for simple expression.")
     CHECK(isSuccess);
     REQUIRE_THAT(result, Catch::WithinRel(3.0, EPSILON));
 }
-          
+
+TEST_CASE("tryEvaluateExpression returns correct result for expression.")
+{
+    double result;
+    bool isSuccess = tryEvaluateExpression("((25+8)*10)-1", result);
+    
+    CHECK(isSuccess);
+    REQUIRE_THAT(result, Catch::WithinRel(329.0, EPSILON));
+}
+
 TEST_CASE("tryEvaluateExpression returns correct result for complex expression.")
 {
     double result;
