@@ -59,11 +59,13 @@ public:
             if (!endMessage.empty())
                 std::cout << game->endMessage() << std::endl;
             
-            if (t2.elapsed() <= game->answerWaitTime()) {
+            const double elapsed = t2.elapsed();
+            if (elapsed <= game->answerWaitTime()) {
                 score += game->getScore(answer);
             }
             else {
-                std::cout << "Answer time limit exceeded, sorry!" << std::endl;
+                std::cout << "You took " << std::to_string(elapsed) << " seconds to answer" <<
+                             " which exceeds the time limit, sorry!" << std::endl;
             }
             std::cout << "Current score: " << score << std::endl << std::endl;
         }
