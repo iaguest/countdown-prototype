@@ -81,7 +81,7 @@
 		6AAE59D323F328E6002860B6 /* ConundrumGameTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConundrumGameTests.cpp; sourceTree = "<group>"; };
 		6ACAE9C623E1A2E80018DCD2 /* countdown_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = countdown_tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACAE9CF23E1A5E80018DCD2 /* NumbersGameUtilsTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersGameUtilsTests.cpp; sourceTree = "<group>"; };
-		6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NumbersGameUtils.hpp; sourceTree = "<group>"; };
+		6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumbersGameUtils.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,7 @@
 				6A1AF693243F167700A58EA2 /* expression_generators */,
 				6AA821E423D0EE2C003CA7FC /* Io.h */,
 				6AA8220B23DB189C003CA7FC /* Timer.h */,
-				6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.hpp */,
+				6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.h */,
 				6AA8220723DB1833003CA7FC /* Io.cpp */,
 				6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */,
 			);
