@@ -30,11 +30,11 @@ int main(int argc, const char * argv[])
 {
     std::mt19937 gen(std::random_device{}());
     
-    const std::string path = "/Users/ianguest/C++/countdown/countdown";
+    const std::string resourcePath = "/Users/ianguest/C++/countdown/countdown/resources";
     
-    std::vector<char> vowels = Io::getLetters(path, "vowels.txt");
-    std::vector<char> consonants = Io::getLetters(path, "consonants.txt");
-    std::vector<std::string> words = Io::getWords(path, "UK_english_truncated.txt");
+    std::vector<char> vowels = Io::getLetters(resourcePath, "vowels.txt");
+    std::vector<char> consonants = Io::getLetters(resourcePath, "consonants.txt");
+    std::vector<std::string> words = Io::getWords(resourcePath, "UK_english_truncated.txt");
         
     std::vector<IGame*> games;
     LettersGame g1(gen, vowels, consonants, words);
