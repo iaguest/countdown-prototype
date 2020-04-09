@@ -15,7 +15,7 @@
 #include <unordered_set>
 #include <vector>
 
-#include "NumbersGameUtils.hpp"
+#include "NumbersGameUtils.h"
 
 namespace {
 
