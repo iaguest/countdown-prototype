@@ -15,7 +15,7 @@
 #include <vector>
 
 #include "ParenthesizedExpressionsGenerator.h"
-#include "Utils.h"
+#include "NumbersGameUtils.hpp"
 
 class ComplexExpressionsGenerator : public IGenerator<std::string>
 {
@@ -79,7 +79,7 @@ private:
    
     std::vector<std::string> tokenizeExpression(const std::string& expression) const {
         std::vector<std::string> tokenized{""};
-        for (auto& item: Utils::tokenizeExpression(expression))
+        for (auto& item: NumbersGameUtils::tokenizeExpression(expression))
              tokenized.push_back(item);
         tokenized.push_back("");
         return tokenized;
