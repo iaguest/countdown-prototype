@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 
-#include "../countdown/utilities/NumbersGameUtils.hpp"
+#include "../countdown/utilities/NumbersGameUtils.h"
 
 using namespace NumbersGameUtils;
 
