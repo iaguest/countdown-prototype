@@ -15,7 +15,7 @@
 #include <vector>
 
 #include "ParenthesizedExpressionsGenerator.h"
-#include "NumbersGameUtils.hpp"
+#include "NumbersGameUtils.h"
 
 class ComplexExpressionsGenerator : public IGenerator<std::string>
 {
