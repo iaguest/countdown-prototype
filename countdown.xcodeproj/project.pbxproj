@@ -99,6 +99,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A1AF68F243F117600A58EA2 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				6AAE59CC23EF182E002860B6 /* consonants.txt */,
+				6AAE59CB23EF180E002860B6 /* vowels.txt */,
+				6AA821E223D0ED9C003CA7FC /* UK_english_truncated.txt */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		6A9C1C3423EDC64F006C21DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +138,7 @@
 		6AA821DA23D0ECF2003CA7FC /* countdown */ = {
 			isa = PBXGroup;
 			children = (
+				6A1AF68F243F117600A58EA2 /* resources */,
 				6A1AF689243F10D300A58EA2 /* ComplexExpressionsGenerator.h */,
 				6A1AF68C243F10D300A58EA2 /* ExpressionsGenerator.h */,
 				6A1AF68B243F10D300A58EA2 /* IGenerator.h */,
@@ -135,7 +146,6 @@
 				6A1AF688243F10D300A58EA2 /* PermutationsGenerator.h */,
 				6A1AF68D243F10D300A58EA2 /* SimpleExpressionsGenerator.h */,
 				6A1AF68A243F10D300A58EA2 /* SubPermutationsGenerator.h */,
-				6AA821E223D0ED9C003CA7FC /* UK_english_truncated.txt */,
 				6AA821DB23D0ECF2003CA7FC /* main.cpp */,
 				6AA821E423D0EE2C003CA7FC /* Io.h */,
 				6AA821FD23D8C602003CA7FC /* AbstractGame.h */,
@@ -151,8 +161,6 @@
 				6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */,
 				6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.hpp */,
 				6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */,
-				6AAE59CB23EF180E002860B6 /* vowels.txt */,
-				6AAE59CC23EF182E002860B6 /* consonants.txt */,
 			);
 			path = countdown;
 			sourceTree = "<group>";
