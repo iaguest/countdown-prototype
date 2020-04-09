@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A1AF692243F155C00A58EA2 /* NumbersGameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */; };
 		6AA821DC23D0ECF2003CA7FC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA821DB23D0ECF2003CA7FC /* main.cpp */; };
 		6AA8220123DAF57B003CA7FC /* LettersGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220023DAF57B003CA7FC /* LettersGame.cpp */; };
 		6AA8220823DB1833003CA7FC /* Io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220723DB1833003CA7FC /* Io.cpp */; };
@@ -14,7 +15,6 @@
 		6AA8221623DDEF27003CA7FC /* ConundrumGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */; };
 		6AAE59C223EDCABD002860B6 /* NumbersGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8220C23DB1A69003CA7FC /* NumbersGame.cpp */; };
 		6AAE59C423EDCB9D002860B6 /* NumbersGameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */; };
-		6AAE59C523EDCD95002860B6 /* NumbersGameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */; };
 		6AAE59C723EDCEC6002860B6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE59C623EDCEC6002860B6 /* main.cpp */; };
 		6AAE59C923EDCF36002860B6 /* NumbersGameTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE59C823EDCF36002860B6 /* NumbersGameTests.cpp */; };
 		6AAE59CE23F2AF64002860B6 /* LettersGameTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE59CD23F2AF64002860B6 /* LettersGameTests.cpp */; };
@@ -109,6 +109,33 @@
 			path = resources;
 			sourceTree = "<group>";
 		};
+		6A1AF691243F138800A58EA2 /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6A1AF693243F167700A58EA2 /* expression_generators */,
+				6AA821E423D0EE2C003CA7FC /* Io.h */,
+				6AA8220B23DB189C003CA7FC /* Timer.h */,
+				6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.hpp */,
+				6AA8220723DB1833003CA7FC /* Io.cpp */,
+				6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */,
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
+		6A1AF693243F167700A58EA2 /* expression_generators */ = {
+			isa = PBXGroup;
+			children = (
+				6A1AF68E243F10D300A58EA2 /* ParenthesizedExpressionsGenerator.h */,
+				6A1AF68D243F10D300A58EA2 /* SimpleExpressionsGenerator.h */,
+				6A1AF68A243F10D300A58EA2 /* SubPermutationsGenerator.h */,
+				6A1AF688243F10D300A58EA2 /* PermutationsGenerator.h */,
+				6A1AF689243F10D300A58EA2 /* ComplexExpressionsGenerator.h */,
+				6A1AF68C243F10D300A58EA2 /* ExpressionsGenerator.h */,
+				6A1AF68B243F10D300A58EA2 /* IGenerator.h */,
+			);
+			path = expression_generators;
+			sourceTree = "<group>";
+		};
 		6A9C1C3423EDC64F006C21DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,29 +165,18 @@
 		6AA821DA23D0ECF2003CA7FC /* countdown */ = {
 			isa = PBXGroup;
 			children = (
+				6A1AF691243F138800A58EA2 /* utilities */,
 				6A1AF68F243F117600A58EA2 /* resources */,
-				6A1AF689243F10D300A58EA2 /* ComplexExpressionsGenerator.h */,
-				6A1AF68C243F10D300A58EA2 /* ExpressionsGenerator.h */,
-				6A1AF68B243F10D300A58EA2 /* IGenerator.h */,
-				6A1AF68E243F10D300A58EA2 /* ParenthesizedExpressionsGenerator.h */,
-				6A1AF688243F10D300A58EA2 /* PermutationsGenerator.h */,
-				6A1AF68D243F10D300A58EA2 /* SimpleExpressionsGenerator.h */,
-				6A1AF68A243F10D300A58EA2 /* SubPermutationsGenerator.h */,
 				6AA821DB23D0ECF2003CA7FC /* main.cpp */,
-				6AA821E423D0EE2C003CA7FC /* Io.h */,
 				6AA821FD23D8C602003CA7FC /* AbstractGame.h */,
 				6AA821FE23D8C67A003CA7FC /* GameRunner.h */,
 				6AA821FF23D8C918003CA7FC /* LettersGame.h */,
 				6AA8220023DAF57B003CA7FC /* LettersGame.cpp */,
-				6AA8220723DB1833003CA7FC /* Io.cpp */,
-				6AA8220B23DB189C003CA7FC /* Timer.h */,
 				6AA8220C23DB1A69003CA7FC /* NumbersGame.cpp */,
 				6AA8220D23DB1A69003CA7FC /* NumbersGame.h */,
 				6AA8221123DDD01D003CA7FC /* IGame.h */,
 				6AA8221423DDEE36003CA7FC /* ConundrumGame.h */,
 				6AA8221523DDEF27003CA7FC /* ConundrumGame.cpp */,
-				6ACAE9D223E1D26E0018DCD2 /* NumbersGameUtils.hpp */,
-				6AAE59C323EDCB9D002860B6 /* NumbersGameUtils.cpp */,
 			);
 			path = countdown;
 			sourceTree = "<group>";
@@ -269,9 +285,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A1AF692243F155C00A58EA2 /* NumbersGameUtils.cpp in Sources */,
 				6AAE59D523F3294C002860B6 /* ConundrumGame.cpp in Sources */,
 				6AAE59CF23F2F524002860B6 /* LettersGame.cpp in Sources */,
-				6AAE59C523EDCD95002860B6 /* NumbersGameUtils.cpp in Sources */,
 				6AAE59C223EDCABD002860B6 /* NumbersGame.cpp in Sources */,
 				6AAE59C923EDCF36002860B6 /* NumbersGameTests.cpp in Sources */,
 				6AAE59C723EDCEC6002860B6 /* main.cpp in Sources */,
