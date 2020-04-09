@@ -13,7 +13,7 @@
 #include <string>
 
 #include "NumbersGame.h"
-#include "NumbersGameUtils.hpp"
+#include "NumbersGameUtils.h"
 
 namespace {
 
