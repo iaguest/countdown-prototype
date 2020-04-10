@@ -10,15 +10,32 @@
 
 #include "../countdown/utilities/expression_generators/ExpressionsGenerator.h"
 
+#include <string>
+#include <vector>
+
+namespace ExpressionsGeneratorTestUtils
+{
+
+std::vector<std::string> toVector(ExpressionsGenerator& gen) {
+    std::vector<std::string> output;
+    for (gen.first(); !gen.isDone(); gen.next())
+        output.push_back(gen.currentItem());
+    return output;
+}
+
+}
 
 TEST_CASE("ExpressionsGenerator is constructable")
 {
     REQUIRE_NOTHROW(ExpressionsGenerator(std::vector<int>{1,2,3}));
 }
 
-//def test_2_number_case_has_n_permutations():
-//    g = ExpressionsGenerator([1, 2])
-//    assert 10 == len(list(g))
+TEST_CASE("Two number case has N permutations")
+{
+    auto gen = ExpressionsGenerator(std::vector<int>{1,2});
+    REQUIRE(10 == ExpressionsGeneratorTestUtils::toVector(gen).size());
+}
+
 //
 //
 //def test_2_number_case_contains_expected_permutations():
@@ -28,10 +45,13 @@ TEST_CASE("ExpressionsGenerator is constructable")
 //    assert all(e in actual for e in expected)
 //
 //
-//def test_3_number_case_has_n_permutations():
-//    g = ExpressionsGenerator([1, 2, 3])
-//    assert 435 == len(list(g))
-//
+
+TEST_CASE("Three number case has N permutations")
+{
+    auto gen = ExpressionsGenerator(std::vector<int>{1,2,3});
+    REQUIRE(435 == ExpressionsGeneratorTestUtils::toVector(gen).size());
+}
+
 //
 //def test_3_number_case_contains_expected_permutations_from_2_number_case():
 //    expected = ['1', '2', '1+2', '1-2', '1*2', '1/2', '2+1', '2-1', '2*1', '2/1']
@@ -47,13 +67,16 @@ TEST_CASE("ExpressionsGenerator is constructable")
 //    assert all(e in actual for e in expected)
 //
 //
-//def test_4_number_case_has_n_permutations():
-//    g = ExpressionsGenerator([4, 2, 1, 3])
-//    assert 71188 == len(list(g))
-//
-//
+
+TEST_CASE("Four number case has N permutations")
+{
+    auto gen = ExpressionsGenerator(std::vector<int>{1,2,3,4});
+    REQUIRE(71188 == ExpressionsGeneratorTestUtils::toVector(gen).size());
+}
+
 //def test_4_number_case_contains_expected_permutations():
 //    expected = ['(2*1)+(4-3)', '4+(2+(1+3))', '4*(2/1)+3', '1*2*3*4', '1+(2*3)', '(4/(2*1))-3']
 //    g = ExpressionsGenerator([4, 2, 1, 3])
 //    actual = list(g)
 //    assert all(e in actual for e in expected)
+
