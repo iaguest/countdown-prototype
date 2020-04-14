@@ -54,11 +54,8 @@ private:
     }
     
     std::string currentItemString() const {
-        std::ostringstream os;
         T seq = currentItem();
-        for (const auto& item: seq)
-            os << item;
-        return os.str();
+        return std::string(begin(seq), end(seq));
     }
     
 private:

@@ -46,7 +46,6 @@ public:
             iterations += 1;
             expressions = newExpressions;
             newExpressions.clear();
-            // TODO: don't duplicate next calculation
             maxExpressionIndex = expressions.size() - 1;
         }
         
@@ -97,7 +96,7 @@ private:
     }
     
 private:
-    const std::vector<std::string> simpleExpressionStrings;
+    const std::vector<std::string>& simpleExpressionStrings;
     std::vector<std::vector<std::string>> expressions;
     std::vector<std::vector<std::string>> newExpressions;
     const std::size_t maxIterations;

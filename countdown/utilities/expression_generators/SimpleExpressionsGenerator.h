@@ -54,6 +54,10 @@ public:
     }
 
 private:
+    inline static const std::string opChars = "+-*/";
+    inline static const std::size_t opCharsSize = opChars.size();
+    
+private:
     typedef PermutationsGenerator<std::vector<int>> NumberSequenceGenerator;
     typedef SubPermutationsGenerator<std::vector<char>> OperatorSequenceGenerator;
     
@@ -67,21 +71,11 @@ private:
     OperatorSequenceGenerator makeOperatorSequenceGenerator(const std::size_t numOps) const
     {
         std::vector<char> ops;
-        for (const auto& c: std::string("+-*/"))
+        ops.reserve(opCharsSize*numOps);
+        for (const auto& c: opChars)
             std::generate_n(std::back_inserter(ops), numOps, [&c](){ return c; });
         return OperatorSequenceGenerator(ops, numOps);
     }
-    
-    std::vector<std::string> makeTokens(const std::vector<int>& numSeq) const
-    {
-        std::vector<std::string> tokens;
-        for (const auto& item: numSeq) {
-            tokens.push_back(std::string());
-            tokens.push_back(std::to_string(item));
-        }
-        tokens.push_back(std::string());
-        return tokens;
-    }    
     
 private:
     NumberSequenceGenerator numGen;
