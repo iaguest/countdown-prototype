@@ -33,7 +33,7 @@ public:
     void next() override {
         while (true) {
             hasNext = std::next_permutation(begin(sequence), end(sequence));
-            const std::string sequenceStr = currentItemString();
+            const std::string& sequenceStr = currentItemString();
             if (isDone() || seen.find(sequenceStr) == end(seen)) {
                 seen.insert(sequenceStr);
                 break;
@@ -54,7 +54,7 @@ private:
     }
     
     std::string currentItemString() const {
-        T seq = currentItem();
+        const T& seq = currentItem();
         return std::string(begin(seq), end(seq));
     }
     
