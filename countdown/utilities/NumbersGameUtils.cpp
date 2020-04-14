@@ -21,6 +21,8 @@ namespace {
 
 typedef std::queue<std::string, std::deque<std::string>> Queue;
 
+std::unordered_set<char> delimeters{ '(', ')', ' ', '*', '/', '+', '-' };
+
 const std::map<char, int>
     opPrecedence{ {'*', 2}, {'/', 2}, {'+', 1}, {'-', 1} };
 
@@ -61,26 +63,16 @@ std::vector<T> toVector(const std::queue<T, std::deque<T>>& queue)
     return vec;
 }
 
-std::unordered_set<char> getDelimeters()
-{
-    std::unordered_set<char> delimeters{ '(', ')', ' ' };
-    std::transform(begin(opPrecedence), end(opPrecedence), std::inserter(delimeters, end(delimeters)),
-                   [](const auto& pair) { return pair.first; });
-    return delimeters;
-}
-
 bool isInvalidChars(const std::string& expression)
 {
-    const auto& delim = getDelimeters();
     return std::find_if(begin(expression), end(expression),
-                        [&](const char& c) { return !isdigit(c) && delim.find(c) == end(delim); })
+                        [&](const char& c) { return !isdigit(c) && delimeters.find(c) == end(delimeters); })
            != end(expression);
 }
 
 }   // end namespace
 
 std::vector<std::string> NumbersGameUtils::tokenizeExpression(const std::string& expression) {
-    std::unordered_set<char> delimeters = getDelimeters();
     std::vector<std::string> tokens;
     std::string number;
     for (const auto& c : expression) {
