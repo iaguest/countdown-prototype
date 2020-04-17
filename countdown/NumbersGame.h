@@ -38,14 +38,11 @@ public:
 
 private:
     bool validNumbersInAnswer(const std::string& answer) const;
-
-    void setIsRunning(bool update);
     
 private:
     int target;
     std::unique_ptr<ExpressionsGenerator> expGen;
     bool isRunning;
-    std::mutex mutex;
     std::thread solverThread;
 };
 

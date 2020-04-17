@@ -8,7 +8,6 @@
 
 #include <array>
 #include <iostream>
-#include <mutex>
 #include <random>
 #include <regex>
 #include <string>
@@ -64,12 +63,12 @@ void NumbersGame::initialize(std::ostream& os, std::istream& is)
     
     expGen = std::make_unique<ExpressionsGenerator>(gameBoard);
     
-    setIsRunning(false);
+    isRunning = false;
 }
 
 void NumbersGame::onStart()
 {
-    setIsRunning(true);
+    isRunning = true;
     
     solverThread = std::thread(
         [&expGen = expGen, &isRunning = isRunning]()
@@ -81,7 +80,7 @@ void NumbersGame::onStart()
 
 void NumbersGame::onEnd()
 {
-    setIsRunning(false);
+    isRunning = false;
     solverThread.join();
     std::cout << expGen->currentItem() << std::endl;
 }
@@ -126,10 +125,4 @@ bool NumbersGame::validNumbersInAnswer(const std::string& answer) const
     std::set_difference(begin(answer_nums), end(answer_nums), begin(gameBoardCopy), end(gameBoardCopy),                         std::back_inserter(diffs));
     
     return diffs.empty();
-}
-
-void NumbersGame::setIsRunning(bool update)
-{
-    std::lock_guard<std::mutex> guard(mutex);
-    isRunning = update;
 }
