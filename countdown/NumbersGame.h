@@ -44,6 +44,8 @@ private:
     std::unique_ptr<ExpressionsGenerator> expGen;
     bool isRunning;
     std::thread solverThread;
+    int bestScore;
+    std::string bestSolution;
 };
 
 

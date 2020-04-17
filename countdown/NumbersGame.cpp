@@ -64,6 +64,8 @@ void NumbersGame::initialize(std::ostream& os, std::istream& is)
     expGen = std::make_unique<ExpressionsGenerator>(gameBoard);
     
     isRunning = false;
+    
+    bestScore = 0;
 }
 
 void NumbersGame::onStart()
@@ -71,10 +73,17 @@ void NumbersGame::onStart()
     isRunning = true;
     
     solverThread = std::thread(
-        [&expGen = expGen, &isRunning = isRunning]()
+        [this]()
         {
-            while (isRunning)
+            while (isRunning) {
                 expGen->next();
+                auto currentItem = expGen->currentItem();
+                int score = getScore(currentItem);
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestSolution = currentItem;
+                }
+            }
         });
 }
 
@@ -82,7 +91,8 @@ void NumbersGame::onEnd()
 {
     isRunning = false;
     solverThread.join();
-    std::cout << expGen->currentItem() << std::endl;
+    std::cout << "best solver score:" << bestScore << " with " << bestSolution << std::endl;
+    std::cout << "last" << expGen->currentItem() << std::endl;
 }
 
 std::string NumbersGame::startMessage() const
