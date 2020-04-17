@@ -24,7 +24,8 @@ public:
     : gen(gen)
     {
     }
-    
+    void onStart() override { };
+    void onEnd() override { };
     std::string getGameBoard() const override;
     std::string startMessage() const override { return std::string(); };
     std::string endMessage() const override { return std::string(); };

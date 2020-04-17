@@ -42,12 +42,14 @@ public:
             std::cout << std::endl;
             std::cout << "Start 30 second countdown!" << std::endl;
             Timer t1;
+            game->onStart();
             while (t1.elapsed() < 30)
             {
                 if (isInterruptable) //&& anyKeyPress)
                   break;
                 std::this_thread::sleep_for (std::chrono::seconds(1));
             }
+            game->onEnd();
             std::cout << "Times up!" << std::endl;
             
             Timer t2;
