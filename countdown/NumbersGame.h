@@ -9,7 +9,13 @@
 #ifndef NumbersGame_hpp
 #define NumbersGame_hpp
 
+#include <memory>
+#include <thread>
+
 #include "AbstractGame.h"
+#include "ExpressionsGenerator.h"
+
+class ExpressionsGenerator;
 
 class NumbersGame : public AbstractGame<int>
 {
@@ -17,6 +23,10 @@ public:
     explicit NumbersGame(std::mt19937& gen);
 
     void initialize(std::ostream& os, std::istream& is) override;
+    
+    void onStart() override;
+    
+    void onEnd() override;
     
     std::string startMessage() const override;
     
@@ -28,9 +38,15 @@ public:
 
 private:
     bool validNumbersInAnswer(const std::string& answer) const;
+
+    void setIsRunning(bool update);
     
 private:
     int target;
+    std::unique_ptr<ExpressionsGenerator> expGen;
+    bool isRunning;
+    std::mutex mutex;
+    std::thread solverThread;
 };
 
 
