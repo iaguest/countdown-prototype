@@ -419,6 +419,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "/Users/ianguest/C++/boost_1_73_0/include";
+				LIBRARY_SEARCH_PATHS = "/Users/ianguest/C++/boost_1_73_0/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -427,6 +429,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "/Users/ianguest/C++/boost_1_73_0/include";
+				LIBRARY_SEARCH_PATHS = "/Users/ianguest/C++/boost_1_73_0/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
