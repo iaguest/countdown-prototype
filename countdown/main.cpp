@@ -25,6 +25,23 @@
 #include "NumbersGame.h"
 #include "Timer.h"
 
+#include "SimpleExpressionsGenerator.h"
+
+template <class T>
+void printGenerator(std::ostream& os, IGenerator<T>& g) {
+    for (g.first(); !g.isDone(); g.next()) {
+        for (auto i: g.currentItem())
+            os << i;
+        os << std::endl;
+    }
+    os.flush();
+}
+
+template <class T>
+void printGenerator(IGenerator<T>& g)
+{
+    printGenerator(std::cout, g);
+}
 
 int main(int argc, const char * argv[])
 {
