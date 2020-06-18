@@ -100,6 +100,8 @@ std::string NumbersGame::startMessage() const
 
 std::string NumbersGame::endMessage() const
 {
+    if (bestScore == 0)
+        return std::string();
     return "Best solver score: " + std::to_string(bestScore) + " with " + bestSolution;
 }
 
