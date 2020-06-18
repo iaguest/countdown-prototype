@@ -35,11 +35,6 @@ bool isOperator(const char& c)
                         [&c](const auto& p) { return p.first == c; }) != end(opPrecedence);
 }
 
-bool isIntegerNumber(const std::string& s)
-{
-    return std::all_of(begin(s), end(s), [](const char& c) { return std::isdigit(c); });
-}
-
 bool isLeftParen(const char& c) { return c == '('; }
 
 bool isRightParen(const char& c) { return c == ')'; }
@@ -71,6 +66,11 @@ bool isInvalidChars(const std::string& expression)
 }
 
 }   // end namespace
+
+bool NumbersGameUtils::isIntegerNumber(const std::string& s)
+{
+    return std::all_of(begin(s), end(s), [](const char& c) { return std::isdigit(c); });
+}
 
 std::vector<std::string> NumbersGameUtils::tokenizeExpression(const std::string& expression) {
     std::vector<std::string> tokens;
