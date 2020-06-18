@@ -27,6 +27,8 @@ std::vector<std::string> getPostFixExpression(const std::vector<std::string>& in
 
 bool tryEvaluateExpression(const std::string& expression, double& result);
 
+bool isIntegerNumber(const std::string& s);
+
 }
 
 #endif /* NumbersGameUtils_hpp */
