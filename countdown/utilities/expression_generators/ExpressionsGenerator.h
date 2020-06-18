@@ -17,6 +17,7 @@
 #include "IGenerator.h"
 #include "SimpleExpressionsGenerator.h"
 #include "ComplexExpressionsGenerator.h"
+#include "NumbersGameUtils.h"
 
 class ExpressionsGenerator : public IGenerator<std::string>
 {
@@ -40,7 +41,7 @@ public:
             if (simpleGen.isDone()) {
                 std::vector<std::string> filteredExpressions;
                 std::copy_if(begin(simpleExpressions), end(simpleExpressions), std::back_inserter(filteredExpressions),
-                             [&](const auto& elem) { return !isIntegerNumber(elem); });
+                             [&](const auto& elem) { return !NumbersGameUtils::isIntegerNumber(elem); });
                 
                 complexGenPtr = std::make_unique<ComplexExpressionsGenerator>(filteredExpressions);
             }
@@ -62,12 +63,6 @@ private:
         simpleGen.first();
         simpleExpressions.clear();
         complexGenPtr.reset(nullptr);
-    }
-
-    // TODO: Don't duplicate this
-    bool isIntegerNumber(const std::string& s)
-    {
-        return std::all_of(begin(s), end(s), [](const char& c) { return std::isdigit(c); });
     }
     
 private:

@@ -54,6 +54,8 @@ public:
     }
 
 private:
+    // Solve using permutations from this subsequence - NB: we limit the available options for
+    // performance reasons with the brute force solution approach.
     inline static const std::vector<char> opChars {'+', '+', '-', '-', '*', '*', '/'};
     
 private:
