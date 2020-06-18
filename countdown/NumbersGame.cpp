@@ -91,13 +91,16 @@ void NumbersGame::onEnd()
 {
     isRunning = false;
     solverThread.join();
-    std::cout << "best solver score:" << bestScore << " with " << bestSolution << std::endl;
-    std::cout << "last" << expGen->currentItem() << std::endl;
 }
 
 std::string NumbersGame::startMessage() const
 {
     return std::string("Target is: " + std::to_string(target));
+}
+
+std::string NumbersGame::endMessage() const
+{
+    return "Best solver score: " + std::to_string(bestScore) + " with " + bestSolution;
 }
 
 int NumbersGame::getScore(const std::string& answer) const

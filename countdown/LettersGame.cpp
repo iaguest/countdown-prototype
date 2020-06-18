@@ -59,6 +59,7 @@ void LettersGame::initialize(std::ostream& os, std::istream& is)
         }
         os << getGameBoard() << std::endl;
     }
+    os << std::endl;
 }
 
 int LettersGame::getScore(const std::string& answer) const
