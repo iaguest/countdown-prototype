@@ -23,11 +23,7 @@
 #include "Io.h"
 #include "LettersGame.h"
 #include "NumbersGame.h"
-#include "Timer.h"
 
-#include "ExpressionsGenerator.h"
-#include "PermutationsGenerator.h"
-#include "SimpleExpressionsGenerator.h"
 
 template <class T>
 void printGenerator(std::ostream& os, IGenerator<T>& g) {
@@ -46,19 +42,6 @@ void printGenerator(IGenerator<T>& g)
 
 int main(int argc, const char * argv[])
 {
-    Timer t;
-//    ExpressionsGenerator foo(std::vector{1,2,3,4});
-////    SubPermutationsGenerator foo(std::vector<int>{1,2,3,4,5,6}, 4);
-////    printGenerator(std::cout, foo);
-//    int i = 0;
-//    do {
-//        foo.next();
-//        //simples.push_back(foo.currentItem());
-//        ++i;
-//    } while(!foo.isDone());    
-//    std::cout << i << std::endl;
-//    std::cout << "Elapsed time: " << t.elapsed() << std::endl;
-    
     std::mt19937 gen(std::random_device{}());
     
     const std::string resourcePath = "/Users/ianguest/C++/countdown/countdown/resources";
