@@ -31,11 +31,12 @@ public:
     std::string startMessage() const override;
     
     std::string endMessage() const override;
-        
+
+    int getScore(const std::string& answer) const override;
+    
     int getTarget() const;
 
 private:
-    int getScore(const std::string& answer) const override;
     
     int maxAnswerTime() const override;
     

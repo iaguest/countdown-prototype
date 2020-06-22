@@ -22,7 +22,6 @@ public:
     
     std::string endMessage() const override;
     
-private:
     int getScore(const std::string& answer) const override;
     
 private:

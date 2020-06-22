@@ -25,9 +25,10 @@ public:
     void initialize(std::ostream& os, std::istream& is) override;
             
     std::string endMessage() const override;
+    
+    int getScore(const std::string& answer) const override;
 
 private:
-    int getScore(const std::string& answer) const override;
     
     std::vector<std::string> getSolutionWords(const std::vector<std::string>& words,
                                               std::vector<char> lettersBoard) const;

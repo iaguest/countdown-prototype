@@ -34,9 +34,9 @@ public:
     virtual void onEndRun() { };
     std::string endMessage() const override { return std::string(); };
     int getScore(const std::string& answer, const double answerTime) const override;
+    virtual int getScore(const std::string& answer) const = 0;
     
 private:
-    virtual int getScore(const std::string& answer) const = 0;
     virtual bool allowInterrupts() const { return false; };
     virtual int maxAnswerTime() const { return 10; };
     
