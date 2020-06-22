@@ -68,7 +68,7 @@ void NumbersGame::initialize(std::ostream& os, std::istream& is)
     bestScore = 0;
 }
 
-void NumbersGame::onStart()
+void NumbersGame::onStartRun()
 {
     isRunning = true;
     
@@ -87,7 +87,7 @@ void NumbersGame::onStart()
         });
 }
 
-void NumbersGame::onEnd()
+void NumbersGame::onEndRun()
 {
     isRunning = false;
     solverThread.join();

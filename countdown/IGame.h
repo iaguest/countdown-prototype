@@ -22,8 +22,9 @@ public:
     IGame& operator=(const IGame&) = delete;
     
     virtual void initialize(std::ostream& os, std::istream& is) = 0;
-    virtual void onStart() = 0;
-    virtual void onEnd() = 0;
+    virtual void onStartRun() = 0;
+    virtual void run() = 0;
+    virtual void onEndRun() = 0;
     virtual std::string getGameBoard() const = 0;
     virtual std::string startMessage() const = 0;
     virtual std::string endMessage() const = 0;

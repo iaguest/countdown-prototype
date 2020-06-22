@@ -9,8 +9,6 @@
 #ifndef GameRunner_h
 #define GameRunner_h
 
-#include <chrono>
-#include <thread>
 #include <vector>
 
 #include "IGame.h"
@@ -37,19 +35,9 @@ public:
             
             std::cout << "[ " << game->getGameBoard() << " ]";
             
-            bool isInterruptable = game->allowInterrupts();
-            
             std::cout << std::endl;
             std::cout << "Start 30 second countdown!" << std::endl;
-            Timer t1;
-            game->onStart();
-            while (t1.elapsed() < 30)
-            {
-                if (isInterruptable) //&& anyKeyPress)
-                  break;
-                std::this_thread::sleep_for (std::chrono::seconds(1));
-            }
-            game->onEnd();
+            game->run();
             std::cout << "Times up!" << std::endl;
             
             Timer t2;

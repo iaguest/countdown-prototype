@@ -9,12 +9,15 @@
 #ifndef AbstractGame_h
 #define AbstractGame_h
 
+#include <chrono>
 #include <random>
 #include <sstream>
 #include <string>
+#include <thread>
 #include <vector>
 
 #include "IGame.h"
+#include "Timer.h"
 
 template <typename T>
 class AbstractGame : public IGame
@@ -24,8 +27,9 @@ public:
     : gen(gen)
     {
     }
-    void onStart() override { };
-    void onEnd() override { };
+    void onStartRun() override { };
+    void run() override;
+    void onEndRun() override { };
     std::string getGameBoard() const override;
     std::string startMessage() const override { return std::string(); };
     std::string endMessage() const override { return std::string(); };
@@ -36,6 +40,22 @@ protected:
     std::vector<T> gameBoard;
 };
 
+template<typename T>
+void AbstractGame<T>::run()
+{
+    onStartRun();
+    
+    Timer t1;
+    bool isInterruptable = allowInterrupts();
+    while (t1.elapsed() < 30)
+    {
+        if (isInterruptable) //&& anyKeyPress)
+          break;
+        std::this_thread::sleep_for (std::chrono::seconds(1));
+    }
+
+    onEndRun();
+}
 
 template <typename T>
 std::string AbstractGame<T>::getGameBoard() const

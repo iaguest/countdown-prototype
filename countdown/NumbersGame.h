@@ -24,9 +24,9 @@ public:
 
     void initialize(std::ostream& os, std::istream& is) override;
     
-    void onStart() override;
+    void onStartRun() override;
     
-    void onEnd() override;
+    void onEndRun() override;
     
     std::string startMessage() const override;
     
