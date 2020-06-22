@@ -24,10 +24,9 @@ public:
     
     void initialize(std::ostream& os, std::istream& is) override;
     
-    int getScore(const std::string& answer) const override;
-    
-    int answerWaitTime() const override { return 10; }
-    
+    int getScore(const std::string& answer,
+                 const double answerTime) const override;
+        
     std::string endMessage() const override;
 
 private:

@@ -32,11 +32,10 @@ public:
     
     std::string endMessage() const override;
     
-    int getScore(const std::string& answer) const override;
+    int getScore(const std::string& answer,
+                 const double answerTime) const override;
     
     int getTarget() const;
-    
-    int answerWaitTime() const override { return 30; }
 
 private:
     bool validNumbersInAnswer(const std::string& answer) const;

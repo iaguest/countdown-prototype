@@ -43,7 +43,10 @@ std::string ConundrumGame::endMessage() const
     return std::string("The correct word was " + nineLetterWord);
 }
 
-int ConundrumGame::getScore(const std::string& answer) const
+int ConundrumGame::getScore(const std::string& answer, const double answerTime) const
 {
+    if (answerTime > 10)
+        return -1;
+    
     return std::equal(begin(nineLetterWord), end(nineLetterWord), begin(answer)) ? 10 : 0;
 }

@@ -27,13 +27,13 @@ public:
     : gen(gen)
     {
     }
-    void onStartRun() override { };
-    void run() override;
-    void onEndRun() override { };
-    std::string getGameBoard() const override;
     std::string startMessage() const override { return std::string(); };
+    std::string getGameBoard() const override;
+    virtual void onStartRun() { };
+    void run() override;
+    virtual void onEndRun() { };
     std::string endMessage() const override { return std::string(); };
-    bool allowInterrupts() const override { return false; }
+    virtual bool allowInterrupts() const { return false; };
     
 protected:
     std::mt19937& gen; //Standard mersenne_twister_engine

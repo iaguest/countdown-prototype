@@ -22,15 +22,12 @@ public:
     IGame& operator=(const IGame&) = delete;
     
     virtual void initialize(std::ostream& os, std::istream& is) = 0;
-    virtual void onStartRun() = 0;
-    virtual void run() = 0;
-    virtual void onEndRun() = 0;
-    virtual std::string getGameBoard() const = 0;
     virtual std::string startMessage() const = 0;
+    virtual std::string getGameBoard() const = 0;
+    virtual void run() = 0;
     virtual std::string endMessage() const = 0;
-    virtual int getScore(const std::string& answer) const = 0;
-    virtual bool allowInterrupts() const = 0;
-    virtual int answerWaitTime() const = 0;
+    virtual int getScore(const std::string& answer,
+                         const double answerTime) const = 0;
 };
 
 #endif /* IGame_h */
