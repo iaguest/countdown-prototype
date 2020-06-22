@@ -22,8 +22,8 @@ public:
     
     std::string endMessage() const override;
     
-    int getScore(const std::string& answer,
-                 const double answerTime) const override;
+private:
+    int getScore(const std::string& answer) const override;
     
 private:
     const std::vector<std::string>& words;

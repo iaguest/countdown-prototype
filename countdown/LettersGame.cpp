@@ -62,11 +62,8 @@ void LettersGame::initialize(std::ostream& os, std::istream& is)
     os << std::endl;
 }
 
-int LettersGame::getScore(const std::string& answer, const double answerTime) const
+int LettersGame::getScore(const std::string& answer) const
 {
-    if (answerTime > 10)
-        return -1;
-        
     std::vector<std::string> solutionWords = getSolutionWords(words, gameBoard);
 
     std::sort(begin(solutionWords), end(solutionWords));

@@ -26,6 +26,7 @@ public:
     virtual std::string getGameBoard() const = 0;
     virtual void run() = 0;
     virtual std::string endMessage() const = 0;
+    // Score -1 on timeout
     virtual int getScore(const std::string& answer,
                          const double answerTime) const = 0;
 };

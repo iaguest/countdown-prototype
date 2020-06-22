@@ -78,7 +78,7 @@ void NumbersGame::onStartRun()
             while (isRunning) {
                 expGen->next();
                 auto currentItem = expGen->currentItem();
-                int score = getScore(currentItem, 0);
+                int score = getScore(currentItem);
                 if (score > bestScore) {
                     bestScore = score;
                     bestSolution = currentItem;
@@ -105,11 +105,8 @@ std::string NumbersGame::endMessage() const
     return "Best solver score: " + std::to_string(bestScore) + " with " + bestSolution;
 }
 
-int NumbersGame::getScore(const std::string& answer, const double answerTime) const
+int NumbersGame::getScore(const std::string& answer) const
 {
-    if (answerTime > 30)
-        return -1;
-    
     double value;
     if (validNumbersInAnswer(answer) &&
         NumbersGameUtils::tryEvaluateExpression(answer, value))
@@ -118,6 +115,11 @@ int NumbersGame::getScore(const std::string& answer, const double answerTime) co
         return abs_diff < 10 ? 10 - abs_diff : 0;
     }
     return 0;
+}
+
+int NumbersGame::maxAnswerTime() const
+{
+    return 30;
 }
 
 int NumbersGame::getTarget() const

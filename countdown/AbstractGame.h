@@ -33,12 +33,36 @@ public:
     void run() override;
     virtual void onEndRun() { };
     std::string endMessage() const override { return std::string(); };
+    int getScore(const std::string& answer, const double answerTime) const override;
+    
+private:
+    virtual int getScore(const std::string& answer) const = 0;
     virtual bool allowInterrupts() const { return false; };
+    virtual int maxAnswerTime() const { return 10; };
     
 protected:
     std::mt19937& gen; //Standard mersenne_twister_engine
     std::vector<T> gameBoard;
 };
+
+template <typename T>
+int AbstractGame<T>::getScore(const std::string& answer, const double answerTime) const
+{
+    if (answerTime > maxAnswerTime())
+        return -1;
+    
+    return getScore(answer);
+}
+
+template <typename T>
+std::string AbstractGame<T>::getGameBoard() const
+{
+    std::stringstream board;
+    std::for_each(begin(gameBoard), end(gameBoard),
+                  [&board](const auto& elem){ board << elem << " "; });
+    std::string boardStr = board.str();
+    return boardStr.empty() ? boardStr : std::string(begin(boardStr), --end(boardStr));
+}
 
 template<typename T>
 void AbstractGame<T>::run()
@@ -55,16 +79,6 @@ void AbstractGame<T>::run()
     }
 
     onEndRun();
-}
-
-template <typename T>
-std::string AbstractGame<T>::getGameBoard() const
-{
-    std::stringstream board;
-    std::for_each(begin(gameBoard), end(gameBoard),
-                  [&board](const auto& elem){ board << elem << " "; });
-    std::string boardStr = board.str();
-    return boardStr.empty() ? boardStr : std::string(begin(boardStr), --end(boardStr));
 }
 
 #endif /* AbstractGame_h */
