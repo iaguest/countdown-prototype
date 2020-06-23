@@ -30,9 +30,11 @@ public:
     std::string startMessage() const override { return std::string(); };
     std::string getGameBoard() const override;
     virtual void onStartRun() { };
+    // 30 second wait, optionally interruptable
     void run() override;
     virtual void onEndRun() { };
     std::string endMessage() const override { return std::string(); };
+    // Returns -1 if answer time too long
     int getScore(const std::string& answer, const double answerTime) const override;
     virtual int getScore(const std::string& answer) const = 0;
     

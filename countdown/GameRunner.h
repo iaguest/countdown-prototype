@@ -29,9 +29,9 @@ public:
         for (auto& game: games) {
             game->initialize(std::cout, std::cin);
             
-            std::string startMessage = game->startMessage();
+            const std::string& startMessage = game->startMessage();
             if (!startMessage.empty())
-                std::cout << game->startMessage() << std::endl;
+                std::cout << startMessage << std::endl;
             
             std::cout << "[ " << game->getGameBoard() << " ]";
             
@@ -40,7 +40,7 @@ public:
             game->run();
             std::cout << "Times up!" << std::endl;
             
-            Timer t2;
+            Timer t;
             std::string answer;
             std::cout << "Enter answer: ";
             std::getline(std::cin, answer);
@@ -49,7 +49,7 @@ public:
             if (!endMessage.empty())
                 std::cout << game->endMessage() << std::endl;
             
-            const double elapsed = t2.elapsed();
+            const double elapsed = t.elapsed();
             
             const int gameScore = game->getScore(answer, elapsed);
             if (gameScore < 0) {
