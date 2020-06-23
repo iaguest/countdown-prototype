@@ -6,6 +6,7 @@
 //  Copyright © 2020 Ian Guest. All rights reserved.
 //
 
+#include <cctype>
 #include <deque>
 #include <functional>
 #include <map>

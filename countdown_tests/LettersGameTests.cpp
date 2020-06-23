@@ -72,6 +72,10 @@ TEST_CASE("Validate LettersGame behavior.")
         game.initialize(oss, iss);
         CHECK_THAT("c u p e c a p s h", Catch::Equals(game.getGameBoard()));
         
+        // Evaluate possible words.
+        game.onStartRun();
+        game.onEndRun();
+        
         CHECK(3 == game.getScore("cup"));
         CHECK(5 == game.getScore("peach"));
         REQUIRE(4 == game.getScore("push"));
@@ -83,6 +87,10 @@ TEST_CASE("Validate LettersGame behavior.")
         iss.str("c v c v c v c c c");        
         game.initialize(oss, iss);
         CHECK_THAT("c u p e c a p s h", Catch::Equals(game.getGameBoard()));
+  
+        // Evaluate possible words.
+        game.onStartRun();
+        game.onEndRun();
         
         CHECK(0 == game.getScore("paced"));  // letter missing from board
         CHECK(0 == game.getScore("shape"));  // valid letters but shape not in words list

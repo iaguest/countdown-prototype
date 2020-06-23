@@ -7,6 +7,7 @@
 //
 
 #include <algorithm>
+#include <cassert>
 #include <iterator>
 
 #include "ConundrumGame.h"
@@ -45,5 +46,9 @@ std::string ConundrumGame::endMessage() const
 
 int ConundrumGame::getScore(const std::string& answer) const
 {
-    return std::equal(begin(nineLetterWord), end(nineLetterWord), begin(answer)) ? 10 : 0;
+    // additional size check needed in MSVC(?!)
+    return (answer.size() == nineLetterWord.size() &&
+            std::equal(begin(nineLetterWord), end(nineLetterWord), begin(answer)))
+        ? 10
+        : 0;
 }

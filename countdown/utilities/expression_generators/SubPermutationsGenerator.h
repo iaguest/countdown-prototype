@@ -10,6 +10,7 @@
 #define SubPermutationsGenerator_h
 
 #include <algorithm>
+#include <cassert>
 #include <iostream>
 #include <map>
 #include <sstream>

@@ -60,16 +60,29 @@ void LettersGame::initialize(std::ostream& os, std::istream& is)
         os << getGameBoard() << std::endl;
     }
     os << std::endl;
+    
+    solutionWords.clear();
+}
+
+void LettersGame::onStartRun()
+{
+    solverThread = std::thread(
+        [this]()
+        {
+            solutionWords = getSolutionWords(words, gameBoard);
+            std::sort(begin(solutionWords), end(solutionWords));
+            std::stable_sort(begin(solutionWords), end(solutionWords),
+                             [](const auto& elem1, const auto elem2) { return elem1.size() < elem2.size(); });
+        });
+}
+
+void LettersGame::onEndRun()
+{
+    solverThread.join();
 }
 
 int LettersGame::getScore(const std::string& answer) const
-{
-    std::vector<std::string> solutionWords = getSolutionWords(words, gameBoard);
-
-    std::sort(begin(solutionWords), end(solutionWords));
-    std::stable_sort(begin(solutionWords), end(solutionWords),
-                     [](const auto& elem1, const auto elem2) { return elem1.size() < elem2.size(); });
-    
+{    
     if (std::find(begin(solutionWords), end(solutionWords), answer) != end(solutionWords))
         return static_cast<int>(answer.size());
     
@@ -95,8 +108,6 @@ std::string LettersGame::endMessage() const
 {
     std::stringstream ss;
     ss << "Possible words are:" << std::endl;
-    // TODO: avoid getting solution words twice!
-    std::vector<std::string> solutionWords = getSolutionWords(words, gameBoard);
     for (const auto& word: solutionWords)
         ss << word << " ";
     ss << std::endl;

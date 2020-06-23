@@ -10,6 +10,7 @@
 #define LettersGame_h
 
 #include <string>
+#include <thread>
 #include <vector>
 
 #include "AbstractGame.h"
@@ -23,7 +24,11 @@ public:
                          const std::vector<std::string>& words);
     
     void initialize(std::ostream& os, std::istream& is) override;
-            
+
+    void onStartRun() override;
+    
+    void onEndRun() override;    
+    
     std::string endMessage() const override;
     
     int getScore(const std::string& answer) const override;
@@ -36,6 +41,8 @@ private:
     std::vector<char> vowels;
     std::vector<char> consonants;
     const std::vector<std::string>& words;
+    std::thread solverThread;
+    std::vector<std::string> solutionWords;
 };
 
 #endif /* LettersGame_h */
