@@ -1,3 +1,3 @@
 # Countdown Prototype
 
-Prototype implementation of the Countdown game in C++17.
+Prototype implementation of the game Countdown using C++17.
